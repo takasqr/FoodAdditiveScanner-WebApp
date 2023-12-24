@@ -1,5 +1,24 @@
 # FoodAdditiveScanner-WebApp
 
+## 技術構成
+
+* Vue3
+* Firebase
+
+## 機能
+
+
+| マーク | ステータス |
+|---|---|
+| ✅ | 対応済み |
+| 🚧 | 今後対応予定 |
+
+
+| ステータス | 項目 |
+|---|---|
+| 🚧 | GitHub Actions による自動デプロイ |
+
+
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
