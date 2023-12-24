@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "food-additive-7acb1"
+  },
+  "targets": {
+    "food-additive-7acb1": {
+      "hosting": {
+        "my-foodadditive-app": [
+          "my-foodadditive-app"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
