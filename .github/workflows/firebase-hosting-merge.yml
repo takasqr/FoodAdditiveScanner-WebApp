@@ -20,9 +20,6 @@ jobs:
       - run: echo VITE_FB_MESSAGING_SENDER_ID=${{ vars.VITE_FB_MESSAGING_SENDER_ID }} >> .env
       - run: echo VITE_FB_APP_ID=${{ vars.VITE_FB_APP_ID }} >> .env
 
-      - run: cat .env
-      - run: ls
-
       # build
       - run: npm ci && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
