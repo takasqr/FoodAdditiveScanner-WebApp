@@ -41,6 +41,12 @@
                     <MenuItem v-for="item in userNavigation" :key="item.name" v-slot="{ active }">
                       <a :href="item.href" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">{{ item.name }}</a>
                     </MenuItem>
+
+                    <!-- ログアウトボタン -->
+                    <MenuItem v-for="item in userNavigation" :key="item.name" v-slot="{ active }">
+                      <a @click="signout()" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">{{ item.name }}</a>
+                    </MenuItem>
+
                   </MenuItems>
                 </transition>
               </Menu>
@@ -98,18 +104,33 @@
     </div>
   </template>
   
-  <script setup lang="ts">
-  import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-  import { Bars3Icon, BellIcon, XMarkIcon, Cog6ToothIcon } from '@heroicons/vue/24/outline'
-  import AppIcon from '@/components/basic/AppIcon.vue'
+<script setup lang="ts">
+import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
+import { Bars3Icon, XMarkIcon, Cog6ToothIcon } from '@heroicons/vue/24/outline'
+import AppIcon from '@/components/basic/AppIcon.vue'
+import AccountService from '@/model/AccountService';
+import router from '../../router';
 
-  const user = {
-    email: 'tom@example.com'
-  }
-  const navigation = [
-    { name: '添加物スキャナー', href: '#', current: true },
-  ]
-  const userNavigation = [
-    { name: 'ログアウト', href: '#' },
-  ]
-  </script>
+const user = {
+  email: 'tom@example.com'
+}
+const navigation = [
+  { name: '添加物スキャナー', href: '#', current: true },
+]
+const userNavigation = [
+  { name: 'ログアウト', href: '#' },
+]
+
+function signout() {
+
+  const accountService = new AccountService
+  accountService.signout()
+    .then((isSignout) => {
+      // ログイン画面に移動
+      router.push({ name: 'signin' })
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+}
+</script>

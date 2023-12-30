@@ -1,6 +1,26 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import AccounService from './model/AccountService';
+import router from './router';
+
+// ログイン状態をチェック
+const accounService = new AccounService
+accounService.checkAuthState()
+  .then((isLoggedIn) => {
+
+    if (isLoggedIn) {
+      // メニューページへ移動
+      router.push({ name: 'scanner' })
+    } else {
+      router.push({ name: 'signin' })
+    }
+
+  }).catch((error) => {
+    // エラー処理
+    console.error('エラー発生:', error);
+  });
+  
 </script>
 
 <template>

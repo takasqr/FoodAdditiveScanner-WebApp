@@ -7,7 +7,8 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: HomeView,
+      meta: { requiresAuth: true },
     },
     {
       path: '/about',
@@ -15,7 +16,8 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
+      component: () => import('../views/AboutView.vue'),
+      meta: { requiresAuth: false },
     },
     {
       path: '/signin',
@@ -23,7 +25,8 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/page/SigninPage.vue')
+      component: () => import('../views/page/SigninPage.vue'),
+      meta: { requiresAuth: false }
     },
     {
       path: '/signup',
@@ -31,7 +34,8 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/page/SignupPage.vue')
+      component: () => import('../views/page/SignupPage.vue'),
+      meta: { requiresAuth: false }
     },
     {
       path: '/scanner',
@@ -39,15 +43,8 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/page/ScannerPage.vue')
-    },
-    {
-      path: '/scanner',
-      name: 'scanner',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/page/ScannerPage.vue')
+      component: () => import('../views/page/ScannerPage.vue'),
+      meta: { requiresAuth: true }
     }
   ]
 })

@@ -1,8 +1,5 @@
 import { initializeApp } from 'firebase/app';
 
-console.log(import.meta.env.VITE_FB_API_KEY)
-
-// TODO: Replace the following with your app's Firebase project configuration
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FB_API_KEY,
   authDomain: import.meta.env.VITE_FB_AUTH_DOMAIN,
