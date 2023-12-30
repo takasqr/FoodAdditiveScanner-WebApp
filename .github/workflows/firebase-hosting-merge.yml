@@ -21,6 +21,7 @@ jobs:
       - run: echo VITE_FB_APP_ID=${{ vars.VITE_FB_APP_ID }}\n > .env
 
       - run: cat .env
+      - run: ls
 
       # build
       - run: npm ci && npm run build
