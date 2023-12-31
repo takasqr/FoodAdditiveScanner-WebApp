@@ -98,6 +98,9 @@
         <main>
           <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <!-- Your content -->
+
+            <ScannerView />
+
           </div>
         </main>
       </div>
@@ -110,6 +113,7 @@ import { Bars3Icon, XMarkIcon, Cog6ToothIcon } from '@heroicons/vue/24/outline'
 import AppIcon from '@/components/basic/AppIcon.vue'
 import AccountService from '@/model/AccountService';
 import router from '../../router';
+import ScannerView from '@/components/component/ScannerView.vue';
 
 const user = {
   email: 'tom@example.com'
