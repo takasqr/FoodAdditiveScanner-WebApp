@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
-import AccounService from './model/AccountService';
+import AccountService from './model/AccountService';
 import router from './router';
 
 // ログイン状態をチェック
-const accounService = new AccounService
-accounService.checkAuthState()
+const accountService = new AccountService
+accountService.checkAuthState()
   .then((isLoggedIn) => {
 
     if (isLoggedIn) {
