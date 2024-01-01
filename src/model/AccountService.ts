@@ -68,6 +68,13 @@ class AccountService {
             const auth = getAuth();
             onAuthStateChanged(auth, (user) => {
                 if (user) {
+
+                    const email = user.email ? user.email : ''
+                    const uid = user.uid
+                    
+                    const store = useAuthStore()
+                    // ユーザー名は email で代用する
+                    store.signin(uid, email, email)
                     
                     resolve(true); // Promiseをtrueで解決する
                 } else {

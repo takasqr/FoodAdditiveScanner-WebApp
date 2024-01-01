@@ -7,10 +7,18 @@
   </button>
   <input type="file" ref="fileInput" class="hidden" @change="handleFileChange">
   <img v-if="imageUrl" :src="imageUrl" class="max-w-xs">
+
+  <div>
+    <button @click="uploadImg" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">ログイン</button>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { getStorage, ref as firebaseRef, uploadBytes } from "firebase/storage";
+import { useAuthStore } from '@/stores/auth'
+import dayjs from 'dayjs'
+
 const fileInput = ref<HTMLInputElement | null>(null)
 const imageUrl = ref<string | null>(null)
 
@@ -28,4 +36,37 @@ function handleFileChange(event: Event) {
     reader.readAsDataURL(files[0])
   }
 }
+
+async function uploadImg() {
+  const storage = getStorage();
+
+  const uid: string = useAuthStore().signinedUser ? useAuthStore().signinedUser!.uid : ''
+  const dateTime = dayjs().format('YYYYMMDDhhmmss')
+
+  const storageRef = firebaseRef(storage, `data/${uid}/image_${dateTime}.jpg`);
+
+  if (imageUrl.value) {
+    const blob = await fetchImageAsBlob(imageUrl.value);
+    if (blob) {
+      uploadBytes(storageRef, blob).then((snapshot) => {
+        console.log('Uploaded a blob or file!');
+      });
+    }
+  }
+}
+
+// New method to fetch an image as a Blob from a URL
+async function fetchImageAsBlob(imageUrl: string) {
+  try {
+    const response = await fetch(imageUrl);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const blob = await response.blob();
+    return blob;
+  } catch (error) {
+    console.error('Error fetching image:', error);
+  }
+}
+
 </script>

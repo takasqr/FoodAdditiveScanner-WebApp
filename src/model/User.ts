@@ -1,6 +1,6 @@
 class User {
     // ユーザー固有のID
-    private readonly uid: string
+    readonly uid: string
     // ユーザー名
     private readonly name: string
     // メールアドレス
@@ -16,7 +16,7 @@ class User {
     }
   
     // 各属性の値を取得するためのgetterメソッド
-    getId() {
+    getUid() {
       return this.uid;
     }
   
@@ -32,7 +32,7 @@ class User {
   
     // 他のUserオブジェクトと等価性を比較するメソッド
     equals(other: User) {
-      return this.uid === other.getId() && this.email === other.getEmail();
+      return this.uid === other.getUid() && this.email === other.getEmail();
     }
   }
   
