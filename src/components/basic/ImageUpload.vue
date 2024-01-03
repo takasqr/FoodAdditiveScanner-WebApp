@@ -9,13 +9,14 @@
   <img v-if="imageUrl" :src="imageUrl" class="max-w-xs">
 
   <div>
-    <button @click="uploadImg" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">ログイン</button>
+    <button @click="annotateImage" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">ログイン</button>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
 import { getStorage, ref as firebaseRef, uploadBytes } from "firebase/storage";
+import { getFunctions, httpsCallable } from "firebase/functions";
 import { useAuthStore } from '@/stores/auth'
 import dayjs from 'dayjs'
 
@@ -67,6 +68,55 @@ async function fetchImageAsBlob(imageUrl: string) {
   } catch (error) {
     console.error('Error fetching image:', error);
   }
+}
+
+async function annotateImage() {
+
+  if (imageUrl.value) {
+    const imageBlob = await fetchImageAsBlob(imageUrl.value);
+
+    if (imageBlob) {
+
+      const base64Image = await encodeImageToBase64(imageBlob);
+
+      const functions = getFunctions();
+      const annotateImage = httpsCallable(functions, 'annotateImage');
+      annotateImage({ image: { content: base64Image.substring(22) }, features: [{ type: 'TEXT_DETECTION' }] })
+        .then((result) => {
+          // Read result of the Cloud Function.
+          /** @type {any} */
+          const data = result.data;
+          console.log(data)
+        });
+    }
+  }
+}
+
+/**
+ * 画像ファイルをBase64にエンコードする。
+ * @param imageFile - エンコードする画像のFileオブジェクト。
+ * @returns Promise<string> - 操作が完了した際にBase64形式の文字列を解決するPromise。
+ */
+// function encodeImageToBase64(imageFile: File): Promise<string> {
+function encodeImageToBase64(imageBlob: Blob): Promise<string> {
+  return new Promise((resolve, reject) => {
+    // FileReaderインスタンスを作成
+    const reader = new FileReader();
+
+    // 読み込みが正常に完了した時のイベントハンドラ
+    reader.onload = () => {
+      const result = reader.result as string;
+      resolve(result);
+    };
+
+    // エラーが発生した時のイベントハンドラ
+    reader.onerror = (error) => {
+      reject(error);
+    };
+
+    // ファイルをData URLとして読み込む
+    reader.readAsDataURL(imageBlob);
+  });
 }
 
 </script>
