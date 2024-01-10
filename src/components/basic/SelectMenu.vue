@@ -26,7 +26,7 @@
   </Listbox>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 import { Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions } from '@headlessui/vue'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/vue/20/solid'
