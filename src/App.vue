@@ -11,7 +11,7 @@ accountService.checkAuthState()
 
     if (isLoggedIn) {
       // メニューページへ移動
-      router.push({ name: 'scanner' })
+      router.push({ name: 'sample' })
     } else {
       router.push({ name: 'signin' })
     }
