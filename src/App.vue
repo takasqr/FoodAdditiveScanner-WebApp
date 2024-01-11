@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import AccountService from './model/AccountService';
 import router from './router';
+import Notification from '@/components/basic/Notification.vue'
 
 // ログイン状態をチェック
 const accountService = new AccountService
@@ -42,4 +44,6 @@ accountService.checkAuthState()
   </header> -->
 
   <RouterView />
+
+  <Notification></Notification>
 </template>

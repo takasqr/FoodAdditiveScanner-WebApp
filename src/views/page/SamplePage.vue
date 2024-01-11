@@ -13,9 +13,14 @@ import PrimaryButton from '@/components/basic/PrimaryButton.vue';
 import InputText from '@/components/basic/InputText.vue'
 import TextArea from '@/components/basic/TextArea.vue'
 import SelectMenu from '@/components/basic/SelectMenu.vue'
+import { useNotificationStore } from '@/stores/notification'
 
 function clickButton() {
     console.log('c')
+
+    // 通知をオン
+    const notificationStore = useNotificationStore()
+    notificationStore.isNotification = true
 }
 
 function change(value: Event) {
