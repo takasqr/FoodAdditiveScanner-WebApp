@@ -5,6 +5,7 @@ import HelloWorld from './components/HelloWorld.vue'
 import AccountService from './model/AccountService';
 import router from './router';
 import Notification from '@/components/basic/Notification.vue'
+import Dialog from '@/components/basic/Dialog.vue'
 
 // ログイン状態をチェック
 const accountService = new AccountService
@@ -46,4 +47,6 @@ accountService.checkAuthState()
   <RouterView />
 
   <Notification></Notification>
+
+  <Dialog></Dialog>
 </template>
