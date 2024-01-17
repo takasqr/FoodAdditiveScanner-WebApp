@@ -39,6 +39,96 @@ const router = createRouter({
       meta: { requiresAuth: false }
     },
     {
+      path: '/forget-password',
+      name: 'forget-password',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/page/ForgetPasswordPage.vue'),
+      meta: { requiresAuth: false }
+    },
+    {
+      path: '/request',
+      name: 'request',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/page/RequestPage.vue'),
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/page/ContactPage.vue'),
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/message',
+      name: 'message',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/page/MessagePage.vue'),
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/payment',
+      name: 'payment',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/page/PaymentPage.vue'),
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/history',
+      name: 'history',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/page/HistoryPage.vue'),
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/menu',
+      name: 'menu',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/page/MenuPage.vue'),
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/setting',
+      name: 'setting',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/page/SettingPage.vue'),
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/404',
+      name: '404',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/page/404Page.vue'),
+      meta: { requiresAuth: false }
+    },
+    {
+      path: '/service-provider',
+      name: 'service-provider',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/page/ServiceProviderPage.vue'),
+      meta: { requiresAuth: false }
+    },
+    {
       path: '/scanner',
       name: 'scanner',
       // route level code-splitting
