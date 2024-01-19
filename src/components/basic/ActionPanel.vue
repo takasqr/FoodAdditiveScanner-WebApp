@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white shadow sm:rounded-lg">
+  <div class="bg-white border border-gray-200 sm:rounded-lg">
     <div class="px-4 py-5 sm:p-6">
       <h3 class="text-base font-semibold leading-6 text-gray-900">Manage subscription</h3>
       <div class="mt-2 max-w-xl text-sm text-gray-500">
