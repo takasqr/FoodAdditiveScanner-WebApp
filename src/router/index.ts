@@ -9,16 +9,7 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView,
-      meta: { requiresAuth: true },
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue'),
-      meta: { requiresAuth: false },
+      meta: { requiresAuth: true, title: 'ホーム' },
     },
     {
       path: '/signin',
@@ -27,7 +18,7 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/page/SigninPage.vue'),
-      meta: { requiresAuth: false }
+      meta: { requiresAuth: false, title: 'ログイン' }
     },
     {
       path: '/signup',
@@ -36,7 +27,7 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/page/SignupPage.vue'),
-      meta: { requiresAuth: false }
+      meta: { requiresAuth: false, title: 'ユーザー登録' }
     },
     {
       path: '/forget-password',
@@ -45,7 +36,7 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/page/ForgetPasswordPage.vue'),
-      meta: { requiresAuth: false }
+      meta: { requiresAuth: false, title: 'パスワード再発行' }
     },
     {
       path: '/request',
@@ -54,7 +45,7 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/page/RequestPage.vue'),
-      meta: { requiresAuth: true }
+      meta: { requiresAuth: true, title: 'リクエスト' }
     },
     {
       path: '/contact',
@@ -63,7 +54,7 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/page/ContactPage.vue'),
-      meta: { requiresAuth: true }
+      meta: { requiresAuth: true, title: '問い合わせ' }
     },
     {
       path: '/message',
@@ -72,7 +63,7 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/page/MessagePage.vue'),
-      meta: { requiresAuth: true }
+      meta: { requiresAuth: true, title: 'メッセージ' }
     },
     {
       path: '/payment',
@@ -81,7 +72,7 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/page/PaymentPage.vue'),
-      meta: { requiresAuth: true }
+      meta: { requiresAuth: true, title: '支払い' }
     },
     {
       path: '/history',
@@ -90,7 +81,7 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/page/HistoryPage.vue'),
-      meta: { requiresAuth: true }
+      meta: { requiresAuth: true, title: '履歴' }
     },
     {
       path: '/menu',
@@ -99,7 +90,7 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/page/MenuPage.vue'),
-      meta: { requiresAuth: true }
+      meta: { requiresAuth: true, title: 'メニュー' }
     },
     {
       path: '/setting',
@@ -108,7 +99,7 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/page/SettingPage.vue'),
-      meta: { requiresAuth: true }
+      meta: { requiresAuth: true, title: '設定' }
     },
     {
       path: '/404',
@@ -117,7 +108,7 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/page/404Page.vue'),
-      meta: { requiresAuth: false }
+      meta: { requiresAuth: false, title: '404' }
     },
     {
       path: '/service-provider',
@@ -126,7 +117,7 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/page/ServiceProviderPage.vue'),
-      meta: { requiresAuth: false }
+      meta: { requiresAuth: false, title: 'サービス提供者' }
     },
     {
       path: '/scanner',
@@ -135,7 +126,7 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/page/ScannerPage.vue'),
-      meta: { requiresAuth: true }
+      meta: { requiresAuth: true, title: 'スキャナー' }
     },
     {
       path: '/sample',
@@ -144,7 +135,7 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/page/SamplePage.vue'),
-      meta: { requiresAuth: true }
+      meta: { requiresAuth: true, title: 'サンプル' }
     }
   ]
 })
@@ -152,33 +143,24 @@ const router = createRouter({
 // ナビゲーションガード
 router.beforeEach(async (to, from) => {
 
-  // // ログイン状態をチェック
-  // const accounService = new AccountService
-  // await accounService.checkAuthState()
-  //   .then((isLoggedIn) => {
+  // ログイン必須のページかどうか
+  if (to.meta.requiresAuth === true) {
 
-  //     if (isLoggedIn) {
-  //       // メニューページへ移動
-  //       router.push({ name: 'scanner' })
-  //     } else {
-  //       router.push({ name: 'signin' })
-  //     }
+    // ログイン状態をチェック
+    const accounService = new AccountService
+    await accounService.checkAuthState()
+      .then((isLoggedIn) => {
+        // ログインしていなかったら
+        if (isLoggedIn === false) {
+          router.push({ name: 'signin' })
+        }
 
-  //   }).catch((error) => {
-  //     // エラー処理
-  //     console.error('エラー発生:', error);
-  //     router.push({ name: 'signin' })
-  //   }); 
-
-  // if (
-  //   // make sure the user is authenticated
-  //   !isAuthenticated &&
-  //   // ❗️ Avoid an infinite redirect
-  //   to.meta.requiresAuth !== true
-  // ) {
-  //   // redirect the user to the login page
-  //   return { name: 'signin' }
-  // }
+      }).catch((error) => {
+        // エラー処理
+        console.error('エラー発生:', error);
+        router.push({ name: 'signin' })
+      }); 
+  }
 })
 
 export default router
