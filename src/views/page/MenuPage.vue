@@ -5,7 +5,7 @@
 
   <DefaultLayout>
     <Feed></Feed>
-    <MainMenu></MainMenu>
+    <!-- <MainMenu></MainMenu> -->
   </DefaultLayout>
 
   <FloatingButton @click="toggleSlideOver">

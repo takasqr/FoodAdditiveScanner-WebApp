@@ -4,7 +4,7 @@
   </SlideOver>
 
   <DefaultLayout>
-    <p>test</p>
+    <HistoryList></HistoryList>
   </DefaultLayout>
 
   <FloatingButton @click="toggleSlideOver">
@@ -20,6 +20,7 @@ import SlideOver from '@/components/basic/SlideOver.vue';
 import FloatingButton from '@/components/basic/FloatingButton.vue'
 import PrimaryButton from '@/components/basic/PrimaryButton.vue';
 import { QuestionMarkCircleIcon } from '@heroicons/vue/24/outline'
+import HistoryList from '@/components/component/HistoryList.vue';
 
 const isSlideOverOpen = ref(false)
 

@@ -4,7 +4,9 @@
   </SlideOver>
 
   <DefaultLayout>
-    <p>test</p>
+    <SettingForm></SettingForm>
+    <NewPasswordArea></NewPasswordArea>
+    <DeleteAccountArea></DeleteAccountArea>
   </DefaultLayout>
 
   <FloatingButton @click="toggleSlideOver">
@@ -20,6 +22,9 @@ import SlideOver from '@/components/basic/SlideOver.vue';
 import FloatingButton from '@/components/basic/FloatingButton.vue'
 import PrimaryButton from '@/components/basic/PrimaryButton.vue';
 import { QuestionMarkCircleIcon } from '@heroicons/vue/24/outline'
+import SettingForm from '@/components/component/SettingForm.vue';
+import NewPasswordArea from '@/components/component/NewPasswordArea.vue';
+import DeleteAccountArea from '@/components/component/DeleteAccountArea.vue';
 
 const isSlideOverOpen = ref(false)
 

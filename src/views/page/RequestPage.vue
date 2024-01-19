@@ -4,7 +4,7 @@
   </SlideOver>
 
   <DefaultLayout>
-    <p>test</p>
+    <RequestForm></RequestForm>
   </DefaultLayout>
 
   <FloatingButton @click="toggleSlideOver">
@@ -20,6 +20,7 @@ import SlideOver from '@/components/basic/SlideOver.vue';
 import FloatingButton from '@/components/basic/FloatingButton.vue'
 import PrimaryButton from '@/components/basic/PrimaryButton.vue';
 import { QuestionMarkCircleIcon } from '@heroicons/vue/24/outline'
+import RequestForm from '@/components/component/RequestForm.vue';
 
 const isSlideOverOpen = ref(false)
 
