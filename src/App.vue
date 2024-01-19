@@ -6,24 +6,17 @@ import AccountService from './model/AccountService';
 import router from './router';
 import Notification from '@/components/basic/Notification.vue'
 import Dialog from '@/components/basic/Dialog.vue'
+import { useThemeStore } from '@/stores/theme'
+import { useBannerStore } from '@/stores/banner';
 
-// ログイン状態をチェック
-const accountService = new AccountService
-accountService.checkAuthState()
-  .then((isLoggedIn) => {
+// ダークモード設定
+const themeStore = useThemeStore()
+themeStore.setup()
 
-    if (isLoggedIn) {
-      // メニューページへ移動
-      router.push({ name: 'sample' })
-    } else {
-      router.push({ name: 'signin' })
-    }
+// Banner
+const bannerStore = useBannerStore()
+bannerStore.open({ title: 'セール', contentText: '初回５０パーセントオフキャンペーン実施中！！'})
 
-  }).catch((error) => {
-    // エラー処理
-    console.error('エラー発生:', error);
-  });
-  
 </script>
 
 <template>
@@ -44,9 +37,11 @@ accountService.checkAuthState()
     </div>
   </header> -->
 
-  <RouterView />
+  <div class="bg-white dark:bg-slate-800 min-h-screen">
+    <RouterView />
 
-  <Notification></Notification>
+    <Notification></Notification>
 
-  <Dialog></Dialog>
+    <Dialog></Dialog>
+  </div>
 </template>
