@@ -4,7 +4,10 @@
   </SlideOver>
 
   <DefaultLayout>
-    <Feed></Feed>
+    <Panel>
+      <Feed></Feed>
+    </Panel>
+    
     <!-- <MainMenu></MainMenu> -->
   </DefaultLayout>
 
@@ -23,6 +26,7 @@ import PrimaryButton from '@/components/basic/PrimaryButton.vue';
 import { QuestionMarkCircleIcon } from '@heroicons/vue/24/outline'
 import MainMenu from '@/components/basic/MainMenu.vue'
 import Feed from '@/components/basic/Feed.vue'
+import Panel from '@/components/basic/Panel.vue';
 
 const isSlideOverOpen = ref(false)
 
