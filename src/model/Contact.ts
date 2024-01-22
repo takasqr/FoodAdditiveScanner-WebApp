@@ -1,4 +1,4 @@
-class Contact {
+class Contact implements ContactData, DomainModel {
   // ユーザー固有のID
   readonly uid: string
 
@@ -8,6 +8,18 @@ class Contact {
     this.uid = uid
     this.content = content
   }
+
+  equals(): boolean {
+    // 仮
+    return false
+  }
+
+  toObject(): ContactData {
+    return {
+      uid: this.uid,
+      content: this.content
+    };
+  }
 }
 
-export default Contact
+export { Contact };
