@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 import AccountService from '@/model/AccountService'
 
 const router = createRouter({
@@ -7,9 +6,9 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: HomeView,
-      meta: { requiresAuth: true, title: 'ホーム' },
+      // リダイレクト
+      // https://v3.router.vuejs.org/ja/guide/essentials/redirect-and-alias.html
+      redirect: { name: 'menu'}
     },
     {
       path: '/signin',
