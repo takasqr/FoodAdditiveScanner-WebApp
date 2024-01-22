@@ -1,6 +1,6 @@
 <template>
   <Step></Step>
-  <DatePicker></DatePicker>
+  <DatePicker locale="ja"></DatePicker>
 </template>
 
 <script setup lang="ts">

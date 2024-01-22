@@ -5,7 +5,7 @@
         <span class="sr-only">Previous month</span>
         <ChevronLeftIcon class="h-5 w-5" aria-hidden="true" />
       </button>
-      <div class="flex-auto text-sm font-semibold">January</div>
+      <div class="flex-auto text-sm font-semibold">{{ formattedMonth }}</div>
       <button type="button" class="-m-1.5 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500">
         <span class="sr-only">Next month</span>
         <ChevronRightIcon class="h-5 w-5" aria-hidden="true" />
@@ -30,6 +30,7 @@
 </template>
 
 <script setup lang="ts">
+import { ref, defineProps } from 'vue'
 import {
   CalendarIcon,
   ChevronLeftIcon,
@@ -38,20 +39,31 @@ import {
   MapPinIcon,
 } from '@heroicons/vue/20/solid'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
+import CalendarService from '@/model/CalendarService'
+import { setEnvironmentData } from 'worker_threads';
 
-const meetings = [
-  {
-    id: 1,
-    date: 'January 10th, 2022',
-    time: '5:00 PM',
-    datetime: '2022-01-10T17:00',
-    name: 'Leslie Alexander',
-    imageUrl:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-    location: 'Starbucks',
-  },
-  // More meetings...
-]
+// 'locale' プロパティの型を定義
+// 初期値付きの props
+// https://ja.vuejs.org/guide/typescript/composition-api#props-default-values
+export interface Props {
+  locale?: string
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  locale: 'en',
+})
+
+const formattedMonth = ref('')
+
+const calendarService = new CalendarService(props.locale)
+
+setInitialData()
+
+// 初期データをセットする
+function setInitialData() {
+  formattedMonth.value = calendarService.getLocaleFormattedMonth()
+}
+
 const days = [
   { date: '2021-12-27' },
   { date: '2021-12-28' },
