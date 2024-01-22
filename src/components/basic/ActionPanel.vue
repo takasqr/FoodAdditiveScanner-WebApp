@@ -1,13 +1,24 @@
 <template>
-  <div class="bg-white border border-gray-200 sm:rounded-lg">
-    <div class="px-4 py-5 sm:p-6">
-      <h3 class="text-base font-semibold leading-6 text-gray-900">Manage subscription</h3>
-      <div class="mt-2 max-w-xl text-sm text-gray-500">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae voluptatibus corrupti atque repudiandae nam.</p>
-      </div>
-      <div class="mt-5">
-        <button type="button" class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Change plan</button>
-      </div>
+  <Panel>
+    <h3 class="text-base font-semibold leading-6 text-gray-900">{{ title }}</h3>
+    <div class="mt-2 max-w-xl text-sm text-gray-500">
+      <slot />
     </div>
-  </div>
+    <div class="mt-5">
+      <slot name="actionArea" />
+    </div>
+  </Panel>
 </template>
+
+<script setup lang="ts">
+import Panel from '@/components/basic/Panel.vue';
+
+interface Props {
+  title: string
+}
+
+const props = defineProps<Props>()
+
+// 複数のスロットを扱うには名前付きスロットを使う
+// https://ja.vuejs.org/guide/components/slots.html#named-slots
+</script>
