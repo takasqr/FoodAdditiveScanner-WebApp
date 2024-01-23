@@ -25,4 +25,4 @@ class CalendarService {
   }
 }
 
-export default CalendarService;
+export { CalendarService }

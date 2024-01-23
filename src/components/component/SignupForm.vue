@@ -27,7 +27,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import AccounService from '@/model/AccountService';
+import { AccountService } from '@/model/AccountService';
 import InputEmail from '../basic/InputEmail.vue'
 import InputPassword from '../basic/InputPassword.vue'
 import router from '../../router';
@@ -36,7 +36,7 @@ const email = ref('')
 const password = ref('')
 
 function submit() {
-  const accounService = new AccounService
+  const accounService = new AccountService
   accounService.signup(email.value, password.value)
     .then(() => {
       router.push({ name: 'scanner' })

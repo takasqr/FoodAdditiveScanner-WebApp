@@ -39,7 +39,7 @@ import {
   MapPinIcon,
 } from '@heroicons/vue/20/solid'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-import CalendarService from '@/model/CalendarService'
+import { CalendarService } from '@/model/CalendarService'
 import { setEnvironmentData } from 'worker_threads';
 
 // 'locale' プロパティの型を定義

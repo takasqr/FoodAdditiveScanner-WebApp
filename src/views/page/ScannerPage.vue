@@ -111,7 +111,7 @@
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import { Bars3Icon, XMarkIcon, Cog6ToothIcon } from '@heroicons/vue/24/outline'
 import AppIcon from '@/components/basic/AppIcon.vue'
-import AccountService from '@/model/AccountService';
+import { AccountService } from '@/model/AccountService';
 import router from '../../router';
 import ScannerView from '@/components/component/ScannerView.vue';
 
