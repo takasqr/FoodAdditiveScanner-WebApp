@@ -13,7 +13,7 @@
   </Popover>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
 import { ChevronDownIcon } from '@heroicons/vue/20/solid'
 

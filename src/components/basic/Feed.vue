@@ -27,7 +27,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { CheckIcon, HandThumbUpIcon, UserIcon } from '@heroicons/vue/20/solid'
 
 const timeline = [

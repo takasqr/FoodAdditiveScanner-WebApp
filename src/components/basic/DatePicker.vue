@@ -22,7 +22,7 @@
     </div>
     <div class="isolate mt-2 grid grid-cols-7 gap-px rounded-lg bg-gray-200 text-sm shadow ring-1 ring-gray-200">
       <button v-for="(day, dayIdx) in days" :key="day.date" type="button" :class="['py-1.5 hover:bg-gray-100 focus:z-10', day.isCurrentMonth ? 'bg-white' : 'bg-gray-50', (day.isSelected || day.isToday) && 'font-semibold', day.isSelected && 'text-white', !day.isSelected && day.isCurrentMonth && !day.isToday && 'text-gray-900', !day.isSelected && !day.isCurrentMonth && !day.isToday && 'text-gray-400', day.isToday && !day.isSelected && 'text-indigo-600', dayIdx === 0 && 'rounded-tl-lg', dayIdx === 6 && 'rounded-tr-lg', dayIdx === days.length - 7 && 'rounded-bl-lg', dayIdx === days.length - 1 && 'rounded-br-lg']">
-        <time :datetime="day.date" :class="['mx-auto flex h-7 w-7 items-center justify-center rounded-full', day.isSelected && day.isToday && 'bg-indigo-600', day.isSelected && !day.isToday && 'bg-gray-900']">{{ day.date.split('-').pop().replace(/^0/, '') }}</time>
+        <time :datetime="day.date" :class="['mx-auto flex h-7 w-7 items-center justify-center rounded-full', day.isSelected && day.isToday && 'bg-indigo-600', day.isSelected && !day.isToday && 'bg-gray-900']">{{ getDayDisplayString(day) }}</time>
       </button>
     </div>
     <!-- <button type="button" class="mt-8 w-full rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add event</button> -->
@@ -64,7 +64,14 @@ function setInitialData() {
   formattedMonth.value = calendarService.getLocaleFormattedMonth()
 }
 
-const days = [
+interface Day {
+  date: string;
+  isCurrentMonth?: boolean;
+  isToday?: boolean;
+  isSelected?: boolean;
+}
+
+const days: Day[] = [
   { date: '2021-12-27' },
   { date: '2021-12-28' },
   { date: '2021-12-29' },
@@ -108,4 +115,10 @@ const days = [
   { date: '2022-02-05' },
   { date: '2022-02-06' },
 ]
+
+function getDayDisplayString(day: Day): string {
+
+    const date: string = day.date
+    return date.split('-').pop()?.replace(/^0/, '') || ''
+}
 </script>

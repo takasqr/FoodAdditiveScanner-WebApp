@@ -1,6 +1,6 @@
 <template>
   <div class="mb-4">
-    <ActionPanel></ActionPanel>
+    <ActionPanel title="タイトル"></ActionPanel>
   </div>
   <!-- <div class="mb-4">
     <ActionPanel></ActionPanel>

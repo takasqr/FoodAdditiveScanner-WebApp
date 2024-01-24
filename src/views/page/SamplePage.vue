@@ -47,7 +47,7 @@
 
     <DescriptionList></DescriptionList>
 
-    <ActionPanel></ActionPanel>
+    <ActionPanel title="タイトル"></ActionPanel>
 
     <Pagination></Pagination>
 
