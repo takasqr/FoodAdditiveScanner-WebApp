@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import router from './router';
-import Notification from '@/components/basic/Notification.vue'
-import Dialog from '@/components/basic/Dialog.vue'
-import { useThemeStore } from '@/stores/theme'
-import { useBannerStore } from '@/stores/banner';
+import router from './ui/router';
+import Notification from '@/ui/basic/Notification.vue'
+import Dialog from '@/ui/basic/Dialog.vue'
+import { useThemeStore } from '@/ui/stores/theme'
+import { useBannerStore } from '@/ui/stores/banner';
 import { useHead } from '@unhead/vue'
 
 useHead({

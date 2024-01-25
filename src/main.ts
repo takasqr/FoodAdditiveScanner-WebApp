@@ -1,11 +1,11 @@
-import './assets/main.css'
+import './ui/assets/main.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { createHead } from '@unhead/vue'
 
 import App from './App.vue'
-import router from './router'
+import router from './ui/router'
 
 // firebase
 import './firebase.js'
