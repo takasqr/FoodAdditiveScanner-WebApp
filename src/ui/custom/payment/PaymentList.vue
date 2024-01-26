@@ -9,6 +9,6 @@
 </template>
 
 <script setup lang="ts">
-import ActionPanel from '@/ui/basic/ActionPanel.vue';
+import ActionPanel from '@/ui/templete/ActionPanel.vue';
 // import Pagination from '@/ui/basic/Pagination.vue'
 </script>

@@ -38,6 +38,6 @@
 </template>
   
 <script setup lang="ts">
-import AppIcon from '@/ui/basic/AppIcon.vue'
+import AppIcon from '@/ui/templete/AppIcon.vue'
 import SignupForm from '@/ui/custom/auth/SignupForm.vue'
 </script>

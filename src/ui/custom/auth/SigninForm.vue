@@ -35,8 +35,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { AccountService } from '@/model/domain/auth/AccountService';
-import InputEmail from '../basic/InputEmail.vue'
-import InputPassword from '../basic/InputPassword.vue'
+import InputEmail from '@/ui/basic/InputEmail.vue'
+import InputPassword from '@/ui/basic/InputPassword.vue'
 import router from '@/ui/router';
 
 const email = ref('')

@@ -78,7 +78,7 @@ import Footer from '@/ui/basic/Footer.vue'
 import DescriptionList from '@/ui/basic/DescriptionList.vue'
 import Pagination from '@/ui/basic/Pagination.vue'
 import Breadcrumb from '@/ui/basic/Breadcrumb.vue'
-import ActionPanel from '@/ui/basic/ActionPanel.vue'
+import ActionPanel from '@/ui/templete/ActionPanel.vue'
 import Checkbox from '@/ui/basic/Checkbox.vue'
 
 const isSlideOverOpen = ref(false)
