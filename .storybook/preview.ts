@@ -1,4 +1,6 @@
 import type { Preview } from '@storybook/vue3'
+
+// Tailwind を読み込む
 import '../src/ui/assets/main.css'
 
 const preview: Preview = {
