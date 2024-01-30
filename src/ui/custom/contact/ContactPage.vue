@@ -16,9 +16,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import DefaultLayout from '@/ui/layout/DefaultLayout.vue'
-import SlideOver from '@/ui/basic/SlideOver.vue';
-import FloatingButton from '@/ui/basic/FloatingButton.vue'
-import PrimaryButton from '@/ui/basic/PrimaryButton.vue';
+import SlideOver from '@/ui/basic/slide-over/SlideOver.vue';
+import FloatingButton from '@/ui/basic/floating-button/FloatingButton.vue'
+import PrimaryButton from '@/ui/template/primary-button/PrimaryButton.vue';
 import { QuestionMarkCircleIcon } from '@heroicons/vue/24/outline'
 import ContactForm from '@/ui/custom/contact/ContactForm.vue';
 

@@ -4,9 +4,9 @@
   </SlideOver>
 
   <DefaultLayout>
-    <Panel>
+    <Card>
       <Feed></Feed>
-    </Panel>
+    </Card>
     
     <!-- <MainMenu></MainMenu> -->
   </DefaultLayout>
@@ -20,13 +20,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import DefaultLayout from '@/ui/layout/DefaultLayout.vue'
-import SlideOver from '@/ui/basic/SlideOver.vue';
-import FloatingButton from '@/ui/basic/FloatingButton.vue'
-import PrimaryButton from '@/ui/basic/PrimaryButton.vue';
+import SlideOver from '@/ui/basic/slide-over/SlideOver.vue';
+import FloatingButton from '@/ui/basic/floating-button/FloatingButton.vue'
+import PrimaryButton from '@/ui/template/primary-button/PrimaryButton.vue';
 import { QuestionMarkCircleIcon } from '@heroicons/vue/24/outline'
-import MainMenu from '@/ui/basic/MainMenu.vue'
-import Feed from '@/ui/basic/Feed.vue'
-import Panel from '@/ui/basic/Panel.vue';
+import Feed from '@/ui/basic/feed/Feed.vue'
+import Card from '@/ui/basic/card/Card.vue';
 
 const isSlideOverOpen = ref(false)
 

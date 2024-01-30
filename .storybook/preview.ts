@@ -1,7 +1,17 @@
-import type { Preview } from '@storybook/vue3'
+import { type Preview, setup }  from '@storybook/vue3';
+import { type App } from 'vue';
 
 // Tailwind を読み込む
 import '../src/ui/assets/main.css'
+
+import { createPinia } from 'pinia';
+
+// Pinia をセットアップ
+const pinia = createPinia();
+
+setup((app: App) => {
+  app.use(pinia);
+});
 
 const preview: Preview = {
   parameters: {

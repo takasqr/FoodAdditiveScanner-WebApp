@@ -5,7 +5,7 @@
       <label for="email" class="block text-sm font-medium leading-6 text-gray-900">メールアドレス</label>
       <div class="mt-2">
         
-        <InputEmail @change="inputEmail" />
+        <TextFieldEmail @change="inputEmail" />
 
       </div>
     </div>
@@ -14,7 +14,7 @@
       <label for="password" class="block text-sm font-medium leading-6 text-gray-900">パスワード</label>
       <div class="mt-2">
         
-        <InputPassword @change="inputPassword" />
+        <TextFieldPassword @change="inputPassword" />
 
       </div>
     </div>
@@ -35,8 +35,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { AccountService } from '@/model/domain/auth/AccountService';
-import InputEmail from '@/ui/basic/InputEmail.vue'
-import InputPassword from '@/ui/basic/InputPassword.vue'
+import TextFieldEmail from '@/ui/template/text-field-email/TextFieldEmail.vue'
+import TextFieldPassword from '@/ui/template/text-field-password/TextFieldPassword.vue'
 import router from '@/ui/router';
 
 const email = ref('')

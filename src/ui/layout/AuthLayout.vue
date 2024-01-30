@@ -38,5 +38,5 @@
   </template>
   
 <script setup lang="ts">
-import AppIcon from '@/ui/templete/AppIcon.vue'
+import AppIcon from '@/ui/template/AppIcon.vue'
 </script>

@@ -3,5 +3,5 @@
 </template>
 
 <script setup lang="ts">
-import ImageUpload from '@/ui/basic/ImageUpload.vue';
+import ImageUpload from '@/ui/template/image-upload/ImageUpload.vue';
 </script>

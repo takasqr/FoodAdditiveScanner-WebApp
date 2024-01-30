@@ -110,7 +110,7 @@
 <script setup lang="ts">
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import { Bars3Icon, XMarkIcon, Cog6ToothIcon } from '@heroicons/vue/24/outline'
-import AppIcon from '@/ui/templete/AppIcon.vue'
+import AppIcon from '@/ui/template/AppIcon.vue'
 import { AccountService } from '@/model/domain/auth/AccountService';
 import router from '@/ui/router';
 import ScannerView from '@/ui/custom/general/ScannerView.vue';

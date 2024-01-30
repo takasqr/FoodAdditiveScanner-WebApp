@@ -18,8 +18,8 @@
 </template>
 
 <script setup lang="ts">
-import TextArea from '@/ui/basic/TextArea.vue';
-import PrimaryButton from '@/ui/basic/PrimaryButton.vue'
+import TextArea from '@/ui/basic/text-area/TextArea.vue';
+import PrimaryButton from '@/ui/template/primary-button/PrimaryButton.vue'
 import { ContactRepository } from '@/model/domain/contact/ContactRepository'
 import { Contact } from '@/model/domain/contact/Contact'
 

@@ -4,19 +4,19 @@
     <div class="sm:col-span-4">
       <label for="username" class="block text-sm font-medium leading-6 text-gray-900">名前</label>
       <div class="mt-2">
-        <InputText></InputText>
+        <TextField></TextField>
       </div>
     </div>
 
     <div class="sm:col-span-4">
       <label for="username" class="block text-sm font-medium leading-6 text-gray-900">メールアドレス</label>
       <div class="mt-2">
-        <InputText></InputText>
+        <TextField></TextField>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import InputText from '@/ui/basic/InputText.vue';
+import TextField from '@/ui/basic/text-field/TextField.vue';
 </script>

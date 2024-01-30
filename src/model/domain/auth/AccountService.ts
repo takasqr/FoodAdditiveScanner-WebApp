@@ -1,5 +1,5 @@
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth"
-import { useAuthStore } from '@/ui/stores/auth'
+import { AuthStore } from '@/ui/stores/AuthStore'
 
 // 認証関連の関数を提供する
 class AccountService {
@@ -32,7 +32,7 @@ class AccountService {
                     const email = user.email ? user.email : ''
                     const uid = user.uid
 
-                    const store = useAuthStore()
+                    const store = AuthStore()
                     // ユーザー名は email で代用する
                     store.signin(uid, email, email)
 
@@ -72,7 +72,7 @@ class AccountService {
                     const email = user.email ? user.email : ''
                     const uid = user.uid
                     
-                    const store = useAuthStore()
+                    const store = AuthStore()
                     // ユーザー名は email で代用する
                     store.signin(uid, email, email)
                     

@@ -1,5 +1,5 @@
 <template>
-  <SideBarMenu>
+  <NavigationDrawer>
 
     <Banner></Banner>
 
@@ -19,12 +19,12 @@
 
     <FooterSimple></FooterSimple>
 
-  </SideBarMenu>
+  </NavigationDrawer>
 </template>
 
 <script setup lang="ts">
-import SideBarMenu from '@/ui/basic/SideBarMenu.vue'
-import FooterSimple from '@/ui/basic/FooterSimple.vue'
-import Breadcrumb from '@/ui/basic/Breadcrumb.vue'
-import Banner from '@/ui/basic/Banner.vue'
+import NavigationDrawer from '@/ui/basic/navigation-drawer/NavigationDrawer.vue'
+import FooterSimple from '@/ui/template/footer-simple/FooterSimple.vue'
+import Breadcrumb from '@/ui/basic/breadcrumb/Breadcrumb.vue'
+import Banner from '@/ui/basic/banner/Banner.vue'
 </script>

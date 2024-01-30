@@ -1,14 +1,9 @@
 <template>
   <div class="mb-4">
-    <ActionPanel title="タイトル"></ActionPanel>
+    <ActionCard title="タイトル"></ActionCard>
   </div>
-  <!-- <div class="mb-4">
-    <ActionPanel></ActionPanel>
-  </div> -->
-  <!-- <Pagination></Pagination> -->
 </template>
 
 <script setup lang="ts">
-import ActionPanel from '@/ui/templete/ActionPanel.vue';
-// import Pagination from '@/ui/basic/Pagination.vue'
+import ActionCard from '@/ui/template/action-card/ActionCard.vue';
 </script>

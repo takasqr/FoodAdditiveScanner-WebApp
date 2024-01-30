@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import router from './ui/router';
-import Notification from '@/ui/basic/Notification.vue'
-import Dialog from '@/ui/basic/Dialog.vue'
-import { useThemeStore } from '@/ui/stores/theme'
-import { useBannerStore } from '@/ui/stores/banner';
+import Notification from '@/ui/basic/notification/Notification.vue'
+import Dialog from '@/ui/basic/dialog/Dialog.vue'
+import { ThemeStore } from '@/ui/stores/ThemeStore'
+import { BannerStore } from '@/ui/basic/banner/BannerStore';
 import { useHead } from '@unhead/vue'
 
 useHead({
@@ -26,11 +26,11 @@ useHead({
 })
 
 // ダークモード設定
-const themeStore = useThemeStore()
+const themeStore = ThemeStore()
 themeStore.setup()
 
 // Banner
-const bannerStore = useBannerStore()
+const bannerStore = BannerStore()
 bannerStore.open({ title: 'セール', contentText: '初回５０パーセントオフキャンペーン実施中！！'})
 
 </script>

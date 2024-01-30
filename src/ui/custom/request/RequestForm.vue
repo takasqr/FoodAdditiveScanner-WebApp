@@ -4,7 +4,7 @@
 </template>
 
 <script setup lang="ts">
-import Step from '@/ui/basic/Step.vue'
-import DatePicker from '@/ui/basic/DatePicker.vue';
+import Step from '@/ui/basic/step/Step.vue'
+import DatePicker from '@/ui/basic/date-picker/DatePicker.vue';
 
 </script>

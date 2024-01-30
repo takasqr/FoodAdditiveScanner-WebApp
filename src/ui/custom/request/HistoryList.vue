@@ -1,6 +1,6 @@
 <template>
   <div class="mb-4">
-    <ActionPanel title="1/30 申し込み">
+    <ActionCard title="1/30 申し込み">
       <template #default>
         <p>A paragraph for the main content.</p>
         <p>And another one.</p>
@@ -9,10 +9,10 @@
       <template v-slot:actionArea>
         <PrimaryButton>支払い</PrimaryButton>
       </template>
-    </ActionPanel>
+    </ActionCard>
   </div>
   <div class="mb-4">
-    <ActionPanel title="12/25 完了">
+    <ActionCard title="12/25 完了">
       <template #default>
         <p>A paragraph for the main content.</p>
         <p>And another one.</p>
@@ -21,13 +21,13 @@
       <template v-slot:actionArea>
         <PrimaryButton>支払い</PrimaryButton>
       </template>
-    </ActionPanel>
+    </ActionCard>
   </div>
   <Pagination></Pagination>
 </template>
 
 <script setup lang="ts">
-import ActionPanel from '@/ui/templete/ActionPanel.vue';
-import Pagination from '@/ui/basic/Pagination.vue'
-import PrimaryButton from '@/ui/basic/PrimaryButton.vue';
+import ActionCard from '@/ui/template/action-card/ActionCard.vue';
+import Pagination from '@/ui/basic/pagination/Pagination.vue'
+import PrimaryButton from '@/ui/template/primary-button/PrimaryButton.vue';
 </script>
