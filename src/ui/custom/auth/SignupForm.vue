@@ -39,7 +39,7 @@ function submit() {
   const accounService = new AccountService
   accounService.signup(email.value, password.value)
     .then(() => {
-      router.push({ name: 'scanner' })
+      router.push({ name: 'menu' })
     })
     .catch((error) => {
       console.error(error)

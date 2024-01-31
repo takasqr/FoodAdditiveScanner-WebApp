@@ -1,4 +1,4 @@
-class Contact implements ContactData, DomainModel {
+class Contact implements ContactData {
   // ユーザー固有のID
   readonly uid: string
 

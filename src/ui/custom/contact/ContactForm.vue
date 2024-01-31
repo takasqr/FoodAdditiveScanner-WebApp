@@ -21,14 +21,17 @@
 import TextArea from '@/ui/basic/text-area/TextArea.vue';
 import PrimaryButton from '@/ui/template/primary-button/PrimaryButton.vue'
 import { ContactRepository } from '@/model/domain/contact/ContactRepository'
+import { ContactApplicationService } from '@/model/domain/contact/ContactApplicationService'
 import { Contact } from '@/model/domain/contact/Contact'
 
 // Contact を投稿する
 function post() {
+
   const contactRepository = new ContactRepository
+  const contactApplicationService = new ContactApplicationService(contactRepository)
 
   const contact = new Contact('', 'komatteimasu')
 
-  contactRepository.create(contact.toObject())
+  contactApplicationService.create(contact.toObject())
 }
 </script>
