@@ -99,6 +99,7 @@ const navigation = {
   company: [
     { name: 'プロフィールサイト', href: 'https://takasqr.dev' },
     { name: '技術ブログ', href: 'https://blog.takasqr.dev' },
+    { name: 'Zenn', href: 'https://zenn.dev/takasqr?tab=scraps'}
   ],
   legal: [
     { name: 'プライバシーポリシー', href: '/privacy' },
