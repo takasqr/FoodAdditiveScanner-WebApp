@@ -34,8 +34,14 @@
                   <ul role="list" class="flex flex-1 flex-col gap-y-7">
                     <li>
                       <ul role="list" class="-mx-2 space-y-1">
-                        <li v-for="item in navigation" :key="item.name">
-                          <a :href="item.href" :class="[item.current ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50', 'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold']">
+                        <li v-for="item in navigationTop" :key="item.name">
+
+                          <SecondaryButton block v-if="item.onClick" @click="clickNavigation(item.onClick)">
+                            <component :is="item.icon" :class="[item.current ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600', 'h-6 w-6 shrink-0 inline mx-2']" aria-hidden="true" />
+                            {{ item.name }}
+                          </SecondaryButton>
+
+                          <a v-else :href="item.href" :class="[item.current ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50', 'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold']">
                             <component :is="item.icon" :class="[item.current ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600', 'h-6 w-6 shrink-0']" aria-hidden="true" />
                             {{ item.name }}
                           </a>
@@ -53,14 +59,30 @@
                         </li>
                       </ul>
                     </li> -->
-                    <li class="-mx-6 mt-auto">
+                    <!-- <li class="-mx-6 mt-auto">
                       <a href="#" class="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-50">
-                        <!-- <img class="h-8 w-8 rounded-full bg-gray-50" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" /> -->
-                        <!-- <span class="sr-only">Your profile</span> -->
                         <GlobeAsiaAustraliaIcon class="h-6 w-6"></GlobeAsiaAustraliaIcon>
                         <span aria-hidden="true">ログアウト</span>
                       </a>
+                    </li> -->
+
+                    <li class="-mx-6 mt-auto px-6 py-2">
+                      <ul role="list" class="-mx-2 space-y-1">
+                        <li v-for="item in navigationBottom" :key="item.name">
+
+                          <SecondaryButton block v-if="item.onClick" @click="clickNavigation(item.onClick)">
+                            <component :is="item.icon" :class="[item.current ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600', 'h-6 w-6 shrink-0 inline mx-2']" aria-hidden="true" />
+                            {{ item.name }}
+                          </SecondaryButton>
+
+                          <a v-else :href="item.href" :class="[item.current ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50', 'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold']">
+                            <component :is="item.icon" :class="[item.current ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600', 'h-6 w-6 shrink-0']" aria-hidden="true" />
+                            {{ item.name }}
+                          </a>
+                        </li>
+                      </ul>
                     </li>
+
                   </ul>
                 </nav>
               </div>
@@ -81,33 +103,45 @@
           <ul role="list" class="flex flex-1 flex-col gap-y-7">
             <li>
               <ul role="list" class="-mx-2 space-y-1">
-                <li v-for="item in navigation" :key="item.name">
-                  <a :href="item.href" :class="[item.current ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50', 'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold']">
+                <li v-for="item in navigationTop" :key="item.name">
+
+                  <SecondaryButton block v-if="item.onClick" @click="clickNavigation(item.onClick)">
+                    <component :is="item.icon" :class="[item.current ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600', 'h-6 w-6 shrink-0 inline mx-2']" aria-hidden="true" />
+                    {{ item.name }}
+                  </SecondaryButton>
+
+                  <a v-else :href="item.href" :class="[item.current ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50', 'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold']">
                     <component :is="item.icon" :class="[item.current ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600', 'h-6 w-6 shrink-0']" aria-hidden="true" />
                     {{ item.name }}
                   </a>
                 </li>
               </ul>
             </li>
-            <!-- <li>
-              <div class="text-xs font-semibold leading-6 text-gray-400">Your teams</div>
-              <ul role="list" class="-mx-2 mt-2 space-y-1">
-                <li v-for="team in teams" :key="team.name">
-                  <a :href="team.href" :class="[team.current ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50', 'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold']">
-                    <span :class="[team.current ? 'text-indigo-600 border-indigo-600' : 'text-gray-400 border-gray-200 group-hover:border-indigo-600 group-hover:text-indigo-600', 'flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white']">{{ team.initial }}</span>
-                    <span class="truncate">{{ team.name }}</span>
+
+
+            <li class="-mx-6 mt-auto p-6 pl-2">
+              <ul role="list" class="-mx-2 space-y-1">
+                <li v-for="item in navigationBottom" :key="item.name">
+
+                  <SecondaryButton block v-if="item.onClick" @click="clickNavigation(item.onClick)">
+                    <component :is="item.icon" :class="[item.current ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600', 'h-6 w-6 shrink-0 inline mx-2']" aria-hidden="true" />
+                    {{ item.name }}
+                  </SecondaryButton>
+
+                  <a v-else :href="item.href" :class="[item.current ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50', 'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold']">
+                    <component :is="item.icon" :class="[item.current ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600', 'h-6 w-6 shrink-0']" aria-hidden="true" />
+                    {{ item.name }}
                   </a>
                 </li>
               </ul>
-            </li> -->
-            <li class="-mx-6 mt-auto">
+            </li>
+
+            <!-- <li class="-mx-6 mt-auto">
               <a href="#" class="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-50">
-                <!-- <img class="h-8 w-8 rounded-full bg-gray-50" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" /> -->
-                <!-- <span class="sr-only">Your profile</span> -->
                 <GlobeAsiaAustraliaIcon class="h-6 w-6"></GlobeAsiaAustraliaIcon>
                 <span aria-hidden="true">ログアウト</span>
               </a>
-            </li>
+            </li> -->
           </ul>
         </nav>
       </div>
@@ -119,14 +153,8 @@
         <Bars3Icon class="h-6 w-6" aria-hidden="true" />
       </button>
       <div class="flex-1 text-sm font-semibold leading-6 text-gray-900">Dashboard</div>
-      <!-- <a href="#">
-        <span class="sr-only">Your profile</span>
-        <img class="h-8 w-8 rounded-full bg-gray-50" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-      </a> -->
     </div>
 
-    <!-- <main class="py-10 lg:pl-72">
-      <div class="px-4 sm:px-6 lg:px-8"> -->
     <main class="lg:pl-72">
       <div class="">
         <!-- Your content -->
@@ -137,45 +165,53 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref, watch, type PropType } from 'vue'
 import { useRoute } from 'vue-router'
 import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import {
   Bars3Icon,
-  HomeIcon,
   XMarkIcon,
-  BellAlertIcon,
-  ChatBubbleBottomCenterTextIcon,
-  Cog6ToothIcon,
-  CurrencyYenIcon,
-  CubeIcon,
-  BookOpenIcon,
   GlobeAsiaAustraliaIcon
 } from '@heroicons/vue/24/outline'
+import SecondaryButton from '../../template/secondary-button/SecondaryButton.vue'
 
-const navigation = ref([
-  { name: 'メニュー', href: '/menu', icon: HomeIcon, current: false },
-  { name: 'リクエスト', href: '/request', icon: CubeIcon, current: false },
-  { name: '履歴', href: '/history', icon: BookOpenIcon, current: false },
-  { name: '支払い', href: '/payment', icon: CurrencyYenIcon, current: false },
-  { name: 'メッセージ', href: '/message', icon: BellAlertIcon, current: false },
-  { name: '問い合わせ', href: '/contact', icon: ChatBubbleBottomCenterTextIcon, current: false },
-  { name: '設定', href: '/setting', icon: Cog6ToothIcon, current: false },
-])
-const teams = [
-  { id: 1, name: 'Heroicons', href: '#', initial: 'H', current: false },
-  { id: 2, name: 'Tailwind Labs', href: '#', initial: 'T', current: false },
-  { id: 3, name: 'Workcation', href: '#', initial: 'W', current: false },
-]
+interface Navigation {
+  name: string
+  href?: string
+  onClick?: () => void
+  icon?: any
+  current?: boolean
+}
+
+const props = defineProps({
+  navigationTop: {
+    type: Array as PropType<Navigation[]>,
+    required: true
+  },
+  navigationBottom: {
+    type: Array as PropType<Navigation[]>,
+    required: true
+  }
+})
+
+const navigationTop = ref(props.navigationTop)
+const navigationBottom = ref(props.navigationBottom)
 
 const sidebarOpen = ref(false)
 
 const route = useRoute()
 
 watch(route, (newRoute) => {
-  navigation.value.forEach(item => {
+  navigationTop.value.forEach(item => {
     item.current = item.href === newRoute.path;
   });
 }, { immediate: true });
+
+function clickNavigation(func: () => void) {
+
+  console.log(navigationBottom.value)
+
+  func()
+}
 
 </script>
