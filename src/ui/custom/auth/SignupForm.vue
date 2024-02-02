@@ -20,7 +20,13 @@
     </div>
 
     <div>
-      <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">ユーザー登録</button>
+      <PrimaryButton block type="submit">新規登録</PrimaryButton>
+      
+      <div class="px-2 py-6">
+        <Divider>または</Divider>
+      </div>
+
+      <SecondaryButton block href="/signin">ログイン</SecondaryButton>
     </div>
   </form>
 </template>
@@ -30,6 +36,9 @@ import { ref } from 'vue'
 import { AccountService } from '@/model/domain/auth/AccountService';
 import TextFieldEmail from '@/ui/template/text-field-email/TextFieldEmail.vue'
 import TextFieldPassword from '@/ui/template/text-field-password/TextFieldPassword.vue'
+import PrimaryButton from '@/ui/template/primary-button/PrimaryButton.vue';
+import SecondaryButton from '@/ui/template/secondary-button/SecondaryButton.vue'
+import Divider from '@/ui/basic/divider/Divider.vue'
 import router from '@/ui/router';
 
 const email = ref('')
