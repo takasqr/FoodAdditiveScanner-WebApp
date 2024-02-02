@@ -23,20 +23,15 @@ export const Primary: Story = {
       };
     },
     components: { Select },
-    template: '<Select :data="data"></Select>',
+    template: '<Select :data="data" :title="title" v-model="selected"></Select>',
   }),
   args: {
+    title: '飲み物',
     data: [
-      { id: 1, name: 'SPY Cooper' },
-      { id: 2, name: 'Arlene Mccoy' },
-      { id: 3, name: 'Devon Webb' },
-      { id: 4, name: 'Tom Cook' },
-      { id: 5, name: 'Tanya Fox' },
-      { id: 6, name: 'Hellen Schmidt' },
-      { id: 7, name: 'Caroline Schultz' },
-      { id: 8, name: 'Mason Heaney' },
-      { id: 9, name: 'Claudie Smitham' },
-      { id: 10, name: 'Emil Schaefer' },
+      { key: 'milk', name: 'ミルク' },
+      { key: 'orange', name: 'オレンジジュース' },
+      { key: 'coffee', name: 'コーヒー' }
     ],
+    selected: { key: 'coffee', name: 'コーヒー' }
   },
 };

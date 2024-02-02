@@ -1,6 +1,6 @@
 <template>
   <Listbox as="div" v-model="selected">
-    <ListboxLabel class="block text-sm font-medium leading-6 text-gray-900">Assigned to</ListboxLabel>
+    <ListboxLabel class="block text-sm font-medium leading-6 text-gray-900">{{ title }}</ListboxLabel>
     <div class="relative mt-2">
       <ListboxButton class="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
         <span class="block truncate">{{ selected.name }}</span>
@@ -11,7 +11,7 @@
 
       <transition leave-active-class="transition ease-in duration-100" leave-from-class="opacity-100" leave-to-class="opacity-0">
         <ListboxOptions class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-          <ListboxOption as="template" v-for="option in props.data" :key="option.id" :value="option" v-slot="{ active, selected }">
+          <ListboxOption as="template" v-for="option in props.data" :key="option.key" :value="option" v-slot="{ active, selected }">
             <li :class="[active ? 'bg-indigo-600 text-white' : 'text-gray-900', 'relative cursor-default select-none py-2 pl-8 pr-4']">
               <span :class="[selected ? 'font-semibold' : 'font-normal', 'block truncate']">{{ option.name }}</span>
 
@@ -27,34 +27,35 @@
 </template>
 
 <script setup lang="ts">
-import { ref, defineProps, type PropType } from 'vue'
+import { ref, watch, watchEffect, defineProps, defineEmits, type PropType } from 'vue'
 import { Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions } from '@headlessui/vue'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/vue/20/solid'
 
 interface Option {
-  id: number;
+  key: string;
   name: string;
 }
 
 const props = defineProps({
+  title: String,
   data: {
     type: Array as PropType<Option[]>,
     required: true
+  },
+  modelValue: Object as PropType<Option>
+})
+
+const emits = defineEmits(['update:modelValue'])
+
+const selected = ref<Option>(props.modelValue || props.data[0])
+
+watchEffect(() => {
+  if (props.modelValue) {
+    selected.value = props.modelValue
   }
 })
 
-// const options: Option[] = [
-//   { id: 1, name: 'Wade Cooper' },
-//   { id: 2, name: 'Arlene Mccoy' },
-//   { id: 3, name: 'Devon Webb' },
-//   { id: 4, name: 'Tom Cook' },
-//   { id: 5, name: 'Tanya Fox' },
-//   { id: 6, name: 'Hellen Schmidt' },
-//   { id: 7, name: 'Caroline Schultz' },
-//   { id: 8, name: 'Mason Heaney' },
-//   { id: 9, name: 'Claudie Smitham' },
-//   { id: 10, name: 'Emil Schaefer' },
-// ]
-
-const selected = ref(props.data[3])
+watch(selected, (newValue) => {
+  emits('update:modelValue', newValue)
+})
 </script>
