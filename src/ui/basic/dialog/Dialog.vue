@@ -21,12 +21,12 @@
                 </div>
               </div>
               <div class="mt-5 sm:mt-6" v-if="cancelButtonText.length == 0">
-                <button type="button" class="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" @click="close({ isConfirmed: true })">{{ okButtonText }}</button>
+                <PrimaryButton type="button" class="inline-flex w-full justify-center rounded-md px-3 py-2 text-sm font-semibold shadow-sm" @click="close({ isConfirmed: true })">{{ okButtonText }}</PrimaryButton>
               </div>
 
               <div class="mt-5 grid grid-flow-row-dense grid-cols-2 gap-3 sm:mt-6" v-else>
-                <button type="button" class="inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" ref="cancelButtonRef" @click="close({ isConfirmed: false })">{{ cancelButtonText }}</button>
-                <button type="button" class="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" @click="close({ isConfirmed: true })">{{ okButtonText }}</button>
+                <SecondaryButton type="button" class="inline-flex w-full justify-center rounded-md px-3 py-2 text-sm font-semibold shadow-sm" ref="cancelButtonRef" @click="close({ isConfirmed: false })">{{ cancelButtonText }}</SecondaryButton>
+                <PrimaryButton type="button" class="inline-flex w-full justify-center rounded-md px-3 py-2 text-sm font-semibold shadow-sm" @click="close({ isConfirmed: true })">{{ okButtonText }}</PrimaryButton>
               </div>
             </DialogPanel>
           </TransitionChild>
@@ -40,6 +40,8 @@
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { CheckIcon } from '@heroicons/vue/24/outline'
 import { DialogStore } from './DialogStore'
+import PrimaryButton from '@/ui/template/primary-button/PrimaryButton.vue';
+import SecondaryButton from '@/ui/template/secondary-button/SecondaryButton.vue'
 
 // ダイアログ用 state を購読
 const dialogStore = DialogStore()
