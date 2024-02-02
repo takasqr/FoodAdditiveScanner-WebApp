@@ -11,7 +11,8 @@
         <p class="text-sm leading-6 text-gray-900">
           <strong class="font-semibold">{{ title }}</strong><svg viewBox="0 0 2 2" class="mx-2 inline h-0.5 w-0.5 fill-current" aria-hidden="true"><circle cx="1" cy="1" r="1" /></svg>{{ contentText }}
         </p>
-        <a href="#" class="flex-none rounded-full bg-gray-900 px-3.5 py-1 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900">{{ okButtonText }} <span aria-hidden="true">&rarr;</span></a>
+        <!-- <a href="#" class="flex-none rounded-full bg-gray-900 px-3.5 py-1 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900">{{ okButtonText }} <span aria-hidden="true">&rarr;</span></a> -->
+        <PrimaryButton>{{ okButtonText }} <span aria-hidden="true">&rarr;</span></PrimaryButton>
       </div>
       <div class="flex flex-1 justify-end">
         <button type="button" class="-m-3 p-3 focus-visible:outline-offset-[-4px]" @click="close">
@@ -26,6 +27,7 @@
 <script setup lang="ts">
 import { XMarkIcon } from '@heroicons/vue/20/solid'
 import { BannerStore } from './BannerStore'
+import PrimaryButton from '../../template/primary-button/PrimaryButton.vue';
 
 const bannerStore = BannerStore()
 // ストアの状態とアクションをコンポーネントにマッピング
