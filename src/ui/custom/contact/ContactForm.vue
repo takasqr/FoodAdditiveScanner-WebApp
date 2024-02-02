@@ -1,7 +1,8 @@
 <template>
   <div class="flex items-start space-x-4">
     <div class="min-w-0 flex-1">
-      <form action="#" class="relative">
+      <!-- <form action="#" class="relative"> -->
+      <div class="relative">
         <TextArea></TextArea>
 
         <div class="absolute inset-x-0 bottom-0 flex justify-between py-2 pl-3 pr-2">
@@ -12,7 +13,8 @@
             <PrimaryButton @click="post">Post</PrimaryButton>
           </div>
         </div>
-      </form>
+      </div>
+      <!-- </form> -->
     </div>
   </div>
 </template>
@@ -30,8 +32,6 @@ function post() {
   const contactRepository = new ContactRepository
   const contactApplicationService = new ContactApplicationService(contactRepository)
 
-  const contact = new Contact('', 'komatteimasu')
-
-  contactApplicationService.create(contact.toObject())
+  contactApplicationService.addContact({ uid: '', content: '困ってます。'})
 }
 </script>
