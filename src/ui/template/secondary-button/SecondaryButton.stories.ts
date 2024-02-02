@@ -1,7 +1,7 @@
 // Replace vue3 with vue if you are using Storybook for Vue 2
 import type { Meta, StoryObj } from '@storybook/vue3';
 
-import Button from './PrimaryButton.vue';
+import Button from './SecondaryButton.vue';
 
 const meta: Meta<typeof Button> = {
   component: Button,
