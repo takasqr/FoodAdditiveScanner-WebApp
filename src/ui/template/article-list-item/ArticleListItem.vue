@@ -9,7 +9,7 @@
         <div class="mt-1 flex items-center gap-x-4 text-xs">
           <time :datetime="props.article.createDate" class="text-gray-500">{{ props.article.createDate }}</time>
           <!-- <a :href="props.article.category.href" class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">{{ props.article.category.title }}</a> -->
-          <p :href="props.article.category" class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">{{ props.article.category }}</p>
+          <p class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">{{ props.article.category }}</p>
         </div>
         <div class="group relative">
           <h3 class="mt-0 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
