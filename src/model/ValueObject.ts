@@ -1,4 +1,4 @@
 interface ValueObject {
   equals(): boolean
-  toObject(): DTO;
+  toDTO(): DTO;
 }
