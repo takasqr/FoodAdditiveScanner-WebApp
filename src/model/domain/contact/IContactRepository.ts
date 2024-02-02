@@ -1,3 +1,3 @@
 interface IContactRepository {
-  seve(contactData: ContactData): void
+  add({ uid, content }: { uid: string, content: string }): Promise<string>
 }

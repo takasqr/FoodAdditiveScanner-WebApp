@@ -1,4 +1,4 @@
-class ContactApplicationService {
+class ContactApplicationService implements ApplicationService {
 
   private contactRepository: IContactRepository
   
@@ -6,9 +6,10 @@ class ContactApplicationService {
     this.contactRepository = contactRepository
   }
 
-  create(contactData: ContactData) {
+  // Contact を DB に追加する
+  addContact({ uid, content }: { uid: string, content: string }) {
 
-    this.contactRepository.seve(contactData)
+    this.contactRepository.add({ uid: uid, content: content })
   }
 }
 

@@ -1,4 +1,5 @@
-import { getFirestore, Firestore, collection, addDoc } from "firebase/firestore";
+import { IdGenerator } from "@/model/util/IdGenerator";
+import { getFirestore, Firestore, collection, addDoc, setDoc, doc } from "firebase/firestore";
 
 class ContactRepository implements IContactRepository {
   private db: Firestore
@@ -9,11 +10,31 @@ class ContactRepository implements IContactRepository {
     this.collectionName = 'contacts'
   }
 
-  async seve(contact: ContactData): Promise<string> {
+  async update(contactData: ContactData): Promise<ContactData> {
     try {
-      const docRef = await addDoc(collection(this.db, this.collectionName), contact);
+
+      // setDoc は id が被った時に上書きされてしまうので Firestore のセキュリティルールで防御する
+      await setDoc(doc(this.db, this.collectionName, contactData.id), contactData)
+
+      return contactData;
+    
+    } catch (e) {
+      console.error("Error: ", e);
+      throw e; // エラーを呼び出し元に伝える
+    }
+  }
+
+  async add({ uid, content }: { uid: string, content: string }): Promise<string> {
+    try {
+
+      const contactDataFB = {
+        uid: uid,
+        content: content
+      }
+
+      const docRef = await addDoc(collection(this.db, this.collectionName), contactDataFB);
       console.log("Document: ", docRef)
-      
+
       // 成功時はドキュメントIDを返す
       return docRef.id;
     
@@ -23,18 +44,8 @@ class ContactRepository implements IContactRepository {
     }
   }
 
-  async create(contact: ContactData): Promise<string> {
-    try {
-      const docRef = await addDoc(collection(this.db, this.collectionName), contact);
-      console.log("Document: ", docRef)
-      
-      // 成功時はドキュメントIDを返す
-      return docRef.id;
+  delete(contactData: ContactData): void {
     
-    } catch (e) {
-      console.error("Error: ", e);
-      throw e; // エラーを呼び出し元に伝える
-    }
   }
 }
 
