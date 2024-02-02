@@ -1,7 +1,9 @@
 // Replace vue3 with vue if you are using Storybook for Vue 2
 import type { Meta, StoryObj } from '@storybook/vue3';
+import { CheckIcon, HandThumbUpIcon, UserIcon } from '@heroicons/vue/20/solid'
 
 import Feed from './Feed.vue';
+import type { an } from 'vitest/dist/reporters-OH1c16Kq.js';
 
 const meta: Meta<typeof Feed> = {
   component: Feed,
@@ -16,8 +18,52 @@ type Story = StoryObj<typeof Feed>;
  * to learn how to use render functions.
  */
 export const Primary: Story = {
-  render: () => ({
-    components: { Feed },
-    template: '<Feed></Feed>',
+  render: (args: any) => ({
+    setup() {
+      return {
+        ...args,
+      };
+    },
+    components: { Feed, CheckIcon, HandThumbUpIcon, UserIcon },
+    template: '<Feed :timeline="timeline"></Feed>',
   }),
+  args: {
+    timeline: [
+      {
+        id: 1,
+        content: 'Applied to',
+        date: '2020-09-20',
+        icon: UserIcon,
+        iconBackground: 'bg-gray-400',
+      },
+      {
+        id: 2,
+        content: 'Advanced to phone screening by',
+        date: '2020-09-22',
+        icon: HandThumbUpIcon,
+        iconBackground: 'bg-blue-500',
+      },
+      {
+        id: 3,
+        content: 'Completed phone screening with',
+        date: '2020-09-28',
+        icon: CheckIcon,
+        iconBackground: 'bg-green-500',
+      },
+      {
+        id: 4,
+        content: 'Advanced to interview by',
+        date: '2020-09-30',
+        icon: HandThumbUpIcon,
+        iconBackground: 'bg-blue-500',
+      },
+      // {
+      //   id: 5,
+      //   content: 'Completed interview with',
+      //   date: '2020-10-04',
+      //   icon: CheckIcon,
+      //   iconBackground: 'bg-green-500',
+      // },
+    ]
+  },
 };
