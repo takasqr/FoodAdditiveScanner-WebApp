@@ -1,9 +1,9 @@
 <template>
-  <div class="flex justify-center">
+  <div v-if="steps" class="flex justify-center">
     <nav aria-label="Progress">
       <ol role="list" class="flex items-center">
         <li v-for="(step, stepIdx) in steps" :key="step.name" :class="[stepIdx !== steps.length - 1 ? 'pr-8 sm:pr-20' : '', 'relative']">
-          <template v-if="step.status === 'complete'">
+          <template v-if="step.status === Status.Complete">
             <div class="absolute inset-0 flex items-center" aria-hidden="true">
               <div class="h-0.5 w-full bg-indigo-600" />
             </div>
@@ -12,7 +12,7 @@
               <span class="sr-only">{{ step.name }}</span>
             </a>
           </template>
-          <template v-else-if="step.status === 'current'">
+          <template v-else-if="step.status === Status.Current">
             <div class="absolute inset-0 flex items-center" aria-hidden="true">
               <div class="h-0.5 w-full bg-gray-200" />
             </div>
@@ -37,13 +37,25 @@
 </template>
 
 <script setup lang="ts">
+import { defineProps, type PropType } from 'vue'
 import { CheckIcon } from '@heroicons/vue/20/solid'
 
-const steps = [
-  { name: 'Step 1', href: '#', status: 'complete' },
-  { name: 'Step 2', href: '#', status: 'complete' },
-  { name: 'Step 3', href: '#', status: 'current' },
-  { name: 'Step 4', href: '#', status: 'upcoming' },
-  { name: 'Step 5', href: '#', status: 'upcoming' },
-]
+interface Step {
+  name: string
+  href: string
+  status: Status
+}
+
+enum Status {
+  Complete,
+  Current,
+  Upcoming
+}
+
+const props = defineProps({
+  steps: {
+    type: Array as PropType<Step[]>,
+    require: true
+  }
+})
 </script>

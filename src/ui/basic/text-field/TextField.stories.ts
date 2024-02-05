@@ -18,6 +18,37 @@ type Story = StoryObj<typeof TextField>;
 export const Primary: Story = {
   render: () => ({
     components: { TextField },
-    template: '<TextField></TextField>',
+    template: '<TextField value="John"></TextField>',
   }),
+};
+
+export const WithLabel: Story = {
+  render: () => ({
+    components: { TextField },
+    template: '<TextField label="Name"></TextField>',
+  }),
+};
+
+export const WithPlaceholder: Story = {
+  render: () => ({
+    components: { TextField },
+    template: '<TextField placeholder="入力してください"></TextField>',
+  }),
+};
+
+export const WithError: Story = {
+  render: (args: any) => ({
+    setup() {
+      return {
+        ...args,
+      };
+    },
+    components: { TextField },
+    template: '<TextField value="John Smith" :rules="rules"></TextField>',
+  }),
+  args: {
+    rules: [
+      (value: any) => value.length <= 5 || 'Max 5 characters',
+    ],
+  },
 };

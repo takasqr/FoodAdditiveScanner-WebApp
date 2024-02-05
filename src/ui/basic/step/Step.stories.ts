@@ -7,6 +7,18 @@ const meta: Meta<typeof Step> = {
   component: Step,
 };
 
+interface Step {
+  name: string
+  href: string
+  status: Status
+}
+
+enum Status {
+  Complete,
+  Current,
+  Upcoming
+}
+
 export default meta;
 type Story = StoryObj<typeof Step>;
 
@@ -16,8 +28,22 @@ type Story = StoryObj<typeof Step>;
  * to learn how to use render functions.
  */
 export const Primary: Story = {
-  render: () => ({
+  render: (args: any) => ({
+    setup() {
+      return {
+        ...args,
+      };
+    },
     components: { Step },
-    template: '<Step></Step>',
+    template: '<Step :steps="steps"></Step>',
   }),
+  args: {
+    steps: [
+      { name: 'Step 1', href: '#', status: Status.Complete },
+      { name: 'Step 2', href: '#', status: Status.Complete },
+      { name: 'Step 3', href: '#', status: Status.Complete },
+      { name: 'Step 4', href: '#', status: Status.Current },
+      { name: 'Step 5', href: '#', status: Status.Upcoming },
+    ],
+  },
 };
