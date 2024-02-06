@@ -13,14 +13,14 @@ export default {
           dark: '#f1c232'
         },
         primary: {
-          light: '#6366f1',
-          DEFAULT: '#6366f1',
-          dark: '#0e7490',
+          light: '#fcd34d',
+          DEFAULT: '#fcd34d',
+          dark: '#fcd34d',
         },
         primaryVia: {
-          light: '#29070d',
-          DEFAULT: '#a855f7',
-          dark: '#0e7490',
+          light: '#f87171',
+          DEFAULT: '#f87171',
+          dark: '#f87171',
         },
         primaryTo: {
           light: '#29070d',
