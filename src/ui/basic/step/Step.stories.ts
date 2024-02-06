@@ -2,6 +2,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 
 import Step from './Step.vue';
+import { type StepStatus } from './StepStatus';
 
 const meta: Meta<typeof Step> = {
   component: Step,
@@ -10,13 +11,7 @@ const meta: Meta<typeof Step> = {
 interface Step {
   name: string
   href: string
-  status: Status
-}
-
-enum Status {
-  Complete,
-  Current,
-  Upcoming
+  status: StepStatus
 }
 
 export default meta;
@@ -39,11 +34,11 @@ export const Primary: Story = {
   }),
   args: {
     steps: [
-      { name: 'Step 1', href: '#', status: Status.Complete },
-      { name: 'Step 2', href: '#', status: Status.Complete },
-      { name: 'Step 3', href: '#', status: Status.Complete },
-      { name: 'Step 4', href: '#', status: Status.Current },
-      { name: 'Step 5', href: '#', status: Status.Upcoming },
+      { name: 'Step 1', href: '#', status: 'Complete' },
+      { name: 'Step 2', href: '#', status: 'Complete' },
+      { name: 'Step 3', href: '#', status: 'Complete' },
+      { name: 'Step 4', href: '#', status: 'Current' },
+      { name: 'Step 5', href: '#', status: 'Upcoming' },
     ],
   },
 };
