@@ -21,16 +21,21 @@
       <div>S</div>
     </div>
     <div class="isolate mt-2 grid grid-cols-7 gap-px rounded-lg bg-gray-200 text-sm shadow ring-1 ring-gray-200">
-      <button v-for="(day, dayIdx) in days" :key="day.date" type="button" :class="['py-1.5 hover:bg-gray-100 focus:z-10', day.isCurrentMonth ? 'bg-white' : 'bg-gray-50', (day.isSelected || day.isToday) && 'font-semibold', day.isSelected && 'text-white', !day.isSelected && day.isCurrentMonth && !day.isToday && 'text-gray-900', !day.isSelected && !day.isCurrentMonth && !day.isToday && 'text-gray-400', day.isToday && !day.isSelected && 'text-indigo-600', dayIdx === 0 && 'rounded-tl-lg', dayIdx === 6 && 'rounded-tr-lg', dayIdx === days.length - 7 && 'rounded-bl-lg', dayIdx === days.length - 1 && 'rounded-br-lg']">
+      <button v-for="(day, dayIdx) in days" :key="day.date" @click="changeDatePicker(day)" type="button" :class="['py-1.5 hover:bg-gray-100 focus:z-10', day.isCurrentMonth ? 'bg-white' : 'bg-gray-50', (day.isSelected || day.isToday) && 'font-semibold', day.isSelected && 'text-white', !day.isSelected && day.isCurrentMonth && !day.isToday && 'text-gray-900', !day.isSelected && !day.isCurrentMonth && !day.isToday && 'text-gray-400', day.isToday && !day.isSelected && 'text-indigo-600', dayIdx === 0 && 'rounded-tl-lg', dayIdx === 6 && 'rounded-tr-lg', dayIdx === days.length - 7 && 'rounded-bl-lg', dayIdx === days.length - 1 && 'rounded-br-lg']">
         <time :datetime="day.date" :class="['mx-auto flex h-7 w-7 items-center justify-center rounded-full', day.isSelected && day.isToday && 'bg-indigo-600', day.isSelected && !day.isToday && 'bg-gray-900']">{{ getDayDisplayString(day) }}</time>
       </button>
     </div>
     <!-- <button type="button" class="mt-8 w-full rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add event</button> -->
   </div>
+  <input
+   hidden
+   ref="input"
+   @change="changeInput($event)"
+  />
 </template>
 
 <script setup lang="ts">
-import { ref, defineProps } from 'vue'
+import { ref, defineProps, defineEmits } from 'vue'
 import {
   CalendarIcon,
   ChevronLeftIcon,
@@ -52,6 +57,33 @@ export interface Props {
 const props = withDefaults(defineProps<Props>(), {
   locale: 'en',
 })
+
+const value = ref('')
+const input = ref<HTMLElement | null>(null)
+
+
+// emit を定義
+const emit = defineEmits<{
+  change: [value: Event]
+}>()
+
+function changeDatePicker(day: Day) {
+
+  // myInputがHTMLInputElementであることをTypeScriptに伝える
+  const inputElement = input.value as HTMLInputElement | null;
+  
+  if (inputElement) {
+    inputElement.value = day.date;
+    const event = new Event('change');
+    inputElement.dispatchEvent(event);
+  } else {
+    console.error('input element is not mounted yet');
+  }
+}
+
+function changeInput(event: Event) {
+  emit('change', event)
+}
 
 const formattedMonth = ref('')
 
