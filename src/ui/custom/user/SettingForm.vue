@@ -11,12 +11,13 @@
     <div class="sm:col-span-4">
       <label for="username" class="block text-sm font-medium leading-6 text-gray-900">メールアドレス</label>
       <div class="mt-2">
-        <TextField></TextField>
+        <TextFieldEmail></TextFieldEmail>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import TextField from '@/ui/basic/text-field/TextField.vue';
+import TextField from '../../basic/text-field/TextField.vue';
+import TextFieldEmail from '../../template/text-field-email/TextFieldEmail.vue';
 </script>
