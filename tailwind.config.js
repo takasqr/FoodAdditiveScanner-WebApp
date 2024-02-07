@@ -57,6 +57,15 @@ export default {
           dark: '#0e7490',
         },
       },
+      keyframes: {
+        fadeRight: {
+          'from': { opacity: 0, transform: 'translateX(10px)' },
+          'to': { opacity: 1, transform: 'translateX(0)'}
+        }
+      },
+      animation: {
+        fadeRight: 'fadeRight 2s ease'
+      }
     },
   },
   plugins: [],
