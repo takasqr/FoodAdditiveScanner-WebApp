@@ -11,7 +11,7 @@
 
       <transition leave-active-class="transition ease-in duration-100" leave-from-class="opacity-100" leave-to-class="opacity-0">
         <ListboxOptions class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-          <ListboxOption as="template" v-for="option in props.data" :key="option.key" :value="option" v-slot="{ active, selected }">
+          <ListboxOption as="template" v-for="option in props.options" :key="option.key" :value="option" v-slot="{ active, selected }">
             <li :class="[active ? 'bg-indigo-600 text-white' : 'text-gray-900', 'relative cursor-default select-none py-2 pl-8 pr-4']">
               <span :class="[selected ? 'font-semibold' : 'font-normal', 'block truncate']">{{ option.name }}</span>
 
@@ -31,23 +31,19 @@ import { ref, watch, watchEffect, defineProps, defineEmits, type PropType } from
 import { Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions } from '@headlessui/vue'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/vue/20/solid'
 
-interface Option {
-  key: string;
-  name: string;
-}
 
 const props = defineProps({
   title: String,
-  data: {
-    type: Array as PropType<Option[]>,
+  options: {
+    type: Array as PropType<SelectOption[]>,
     required: true
   },
-  modelValue: Object as PropType<Option>
+  modelValue: Object as PropType<SelectOption>
 })
 
 const emits = defineEmits(['update:modelValue'])
 
-const selected = ref<Option>(props.modelValue || props.data[0])
+const selected = ref<SelectOption>(props.modelValue || props.options[0])
 
 watchEffect(() => {
   if (props.modelValue) {

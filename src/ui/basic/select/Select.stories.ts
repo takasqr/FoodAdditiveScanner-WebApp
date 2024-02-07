@@ -23,11 +23,11 @@ export const Primary: Story = {
       };
     },
     components: { Select },
-    template: '<Select :data="data" :title="title" v-model="selected"></Select>',
+    template: '<Select :options="options" :title="title" v-model="selected"></Select>',
   }),
   args: {
     title: '飲み物',
-    data: [
+    options: [
       { key: 'milk', name: 'ミルク' },
       { key: 'orange', name: 'オレンジジュース' },
       { key: 'coffee', name: 'コーヒー' }
