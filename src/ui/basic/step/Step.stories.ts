@@ -2,17 +2,11 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 
 import Step from './Step.vue';
-import { type StepStatus } from './StepStatus';
+import { type StepContent } from './StepContent'
 
 const meta: Meta<typeof Step> = {
   component: Step,
 };
-
-interface Step {
-  name: string
-  href: string
-  status: StepStatus
-}
 
 export default meta;
 type Story = StoryObj<typeof Step>;
@@ -22,6 +16,15 @@ type Story = StoryObj<typeof Step>;
  * See https://storybook.js.org/docs/api/csf
  * to learn how to use render functions.
  */
+
+const steps: StepContent[] = [
+  { number: 1, status: 'Complete' },
+  { number: 2, status: 'Complete' },
+  { number: 3, status: 'Complete' },
+  { number: 4, status: 'Current' },
+  { number: 5, status: 'Upcoming' },
+]
+
 export const Primary: Story = {
   render: (args: any) => ({
     setup() {
@@ -33,12 +36,6 @@ export const Primary: Story = {
     template: '<Step :steps="steps"></Step>',
   }),
   args: {
-    steps: [
-      { name: 'Step 1', href: '#', status: 'Complete' },
-      { name: 'Step 2', href: '#', status: 'Complete' },
-      { name: 'Step 3', href: '#', status: 'Complete' },
-      { name: 'Step 4', href: '#', status: 'Current' },
-      { name: 'Step 5', href: '#', status: 'Upcoming' },
-    ],
+    steps: steps
   },
 };

@@ -1,8 +1,7 @@
 import type { StepStatus } from "./StepStatus"
 
 type StepContent = {
-  name: string
-  href: string
+  number: Number
   status: StepStatus
 }
 
