@@ -1,17 +1,17 @@
 <template>
-  <div class="overflow-hidden px-3 py-2.5 rounded-lg shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-indigo-600">
+  <div class="overflow-hidden px-4 py-4 rounded-lg ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-indigo-600">
     <label for="comment" class="sr-only">{{ label }}</label>
     <textarea
      :rows=String(rows)
      :value="value"
      @change="changeValue($event)"
      @input="inputValue($event)"
-     class="block w-full resize-none border-0 bg-transparent py-1.5 text-text dark:text-text-dark placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+     class="block w-full resize-none border-0 bg-transparent text-text dark:text-text-dark placeholder:text-gray-400 focus:ring-0 leading-6"
      :placeholder="placeholder"
      :required="required"
     />
   </div>
-  <p v-if="errorMassage.length > 0" class="mt-1 ml-1 text-sm text-red-600" id="email-error">{{ errorMassage }}</p>
+  <p v-if="errorMassage.length > 0" class="mt-1 ml-1 text-sm text-red-600">{{ errorMassage }}</p>
 </template>
 
 <script setup lang="ts">
@@ -35,7 +35,8 @@ const props = withDefaults(defineProps<Props>(), {
 
 // emit を定義
 const emit = defineEmits<{
-  changeValue: [value: string]
+  change: [value: Event],
+  input: [value: Event]
 }>()
 
 const errorMassage = ref("")
@@ -68,7 +69,7 @@ function changeValue(event: Event) {
     const validationResult = validate(target.value)
     if (validationResult === true) {
       // バリデーションに通ったら
-      emit('changeValue', target.value)
+      emit('change', event)
       errorMassage.value = ""; // エラーメッセージをクリア
     } else {
       errorMassage.value = validationResult as string; // エラーメッセージを設定
@@ -82,6 +83,7 @@ function inputValue(event: Event) {
     const validationResult = validate(target.value)
     if (validationResult === true) {
       // バリデーションに通ったら
+      emit('input', event)
       errorMassage.value = ""; // エラーメッセージをクリア
     } else {
       errorMassage.value = validationResult as string; // エラーメッセージを設定
