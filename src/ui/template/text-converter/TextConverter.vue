@@ -19,11 +19,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref, defineProps, type PropType } from 'vue'
+import { ref, defineProps, defineEmits, type PropType } from 'vue'
 import TextArea from '../../basic/text-area/TextArea.vue';
 import Card from '../../basic/card/Card.vue'
 
 const resultText = ref('')
+
+// emit を定義
+const emit = defineEmits<{
+  convert: [value: string]
+}>()
 
 const props = defineProps({
   func: {
@@ -32,7 +37,14 @@ const props = defineProps({
   }
 })
 
-function convert(event: any) {
-  resultText.value = props.func(event.target.value)
+function convert(event: Event) {
+
+  const target = event.target as HTMLInputElement
+
+  if (target) {
+    resultText.value = props.func(target.value)
+
+    emit('convert', resultText.value)
+  }
 }
 </script>

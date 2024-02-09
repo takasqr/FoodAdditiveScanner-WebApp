@@ -23,7 +23,7 @@ export const Primary: Story = {
       }
     },
     components: { TextConverter },
-    template: '<TextConverter :func="convert"></TextConverter>',
+    template: '<TextConverter :func="convert" @convert="(value) => console.log(value)"></TextConverter>',
   }),
   args: {
     convert: (inputText: string) => inputText + '：この入力はテストです。',
