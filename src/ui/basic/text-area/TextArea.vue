@@ -19,7 +19,7 @@ import { ref } from 'vue'
 
 // props を定義
 interface Props{
-  value?: any
+  value?: string
   label?: string
   placeholder?: string
   type?: string
@@ -57,9 +57,11 @@ if (props.rules) {
 }
 
 // 初回バリデーション
-const setupErrorMessage = validate(props.value)
-if (setupErrorMessage) {
-  errorMassage.value = setupErrorMessage as string
+if (props.value) {
+  const setupErrorMessage = validate(props.value)
+  if (setupErrorMessage as boolean !== true) {
+    errorMassage.value = setupErrorMessage as string
+  }
 }
 
 // input の変更を受け取る
