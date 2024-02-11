@@ -3,7 +3,11 @@
 
   <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
     <div>
-      <TextArea :rows="8" @input="convert"></TextArea>
+      <TextArea
+       :rows="8"
+       @input="convert"
+       :placeholder="placeholderInput"
+      ></TextArea>
     </div>
 
     <div>
@@ -34,8 +38,19 @@ const props = defineProps({
   func: {
     type: Function as PropType<(inputText: string) => string>,
     required: true
+  },
+  placeholderInput: {
+    type: String,
+  },
+  placeholderResult: {
+    type: String
   }
 })
+
+// 結果エリアのプレースホルダーを初回設定
+if (props.placeholderResult) {
+  resultText.value = props.placeholderResult
+}
 
 function convert(event: Event) {
 
@@ -45,6 +60,12 @@ function convert(event: Event) {
     resultText.value = props.func(target.value)
 
     emit('convert', resultText.value)
+
+    // 入力がクリアされて、かつ結果プレースホルダーが設定されていたら
+    if (target.value.length === 0 && props.placeholderResult) {
+      resultText.value = props.placeholderResult
+    }
+
   }
 }
 </script>

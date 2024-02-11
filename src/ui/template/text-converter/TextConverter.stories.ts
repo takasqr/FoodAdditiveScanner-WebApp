@@ -29,3 +29,20 @@ export const Primary: Story = {
     convert: (inputText: string) => inputText + '：この入力はテストです。',
   },
 };
+
+export const WithPlaceholder: Story = {
+  render: (args: any) => ({
+    setup() {
+      return {
+        ...args
+      }
+    },
+    components: { TextConverter },
+    template: '<TextConverter :func="convert" @convert="(value) => console.log(value)" :placeholderInput="placeholderInput" :placeholderResult="placeholderResult"></TextConverter>',
+  }),
+  args: {
+    convert: (inputText: string) => inputText + '：この入力はテストです。',
+    placeholderInput: '１２３ａｂｃ',
+    placeholderResult: '123abc'
+  },
+};
