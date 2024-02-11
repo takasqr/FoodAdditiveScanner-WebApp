@@ -2,6 +2,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 
 import Button from './Button.vue';
+import CopySolidIcon from '../../icon/copy/CopySolidIcon.vue'
 
 const meta: Meta<typeof Button> = {
   component: Button,
@@ -26,5 +27,12 @@ export const Block: Story = {
   render: () => ({
     components: { Button },
     template: '<Button block>OK</Button>',
+  }),
+};
+
+export const Icon: Story = {
+  render: () => ({
+    components: { Button, CopySolidIcon },
+    template: '<Button class="text-gray-600"><CopySolidIcon></CopySolidIcon></Button>',
   }),
 };
