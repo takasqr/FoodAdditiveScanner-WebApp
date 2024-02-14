@@ -46,3 +46,21 @@ export const WithPlaceholder: Story = {
     placeholderResult: '123abc'
   },
 };
+
+export const WithValue: Story = {
+  render: (args: any) => ({
+    setup() {
+      return {
+        ...args
+      }
+    },
+    components: { TextConverter },
+    template: '<TextConverter v-model="modelValue" :func="convert" @convert="(value) => console.log(value)" :placeholderInput="placeholderInput" :placeholderResult="placeholderResult"></TextConverter>',
+  }),
+  args: {
+    convert: (inputText: string) => inputText + '：この入力はテストです。',
+    placeholderInput: '１２３ａｂｃ',
+    placeholderResult: '123abc',
+    modelValue: '１'
+  },
+};
