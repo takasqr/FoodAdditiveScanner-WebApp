@@ -175,21 +175,13 @@ import {
 } from '@heroicons/vue/24/outline'
 import SecondaryButton from '../../template/secondary-button/SecondaryButton.vue'
 
-interface Navigation {
-  name: string
-  href?: string
-  onClick?: () => void
-  icon?: any
-  current?: boolean
-}
-
 const props = defineProps({
   navigationTop: {
-    type: Array as PropType<Navigation[]>,
+    type: Array as PropType<NavigationDrawerContent[]>,
     required: true
   },
   navigationBottom: {
-    type: Array as PropType<Navigation[]>,
+    type: Array as PropType<NavigationDrawerContent[]>,
     required: true
   }
 })
