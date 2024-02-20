@@ -1,4 +1,3 @@
-import { IdGenerator } from "@/model/util/IdGenerator";
 import { getFirestore, Firestore, collection, addDoc, setDoc, doc } from "firebase/firestore";
 
 class ContactRepository implements IContactRepository {
