@@ -25,10 +25,9 @@ export const Primary: Story = {
       };
     },
     components: { Tooltip, Button },
-    template: '<Tooltip :text="text" :value="show"><Button>T</Button></Tooltip>',
+    template: '<Tooltip hoverText="ホバー" reactiveText="text" :isReact="isReact"><Button>T</Button></Tooltip>',
   }),
   args: {
-    text: 'TEST',
-    show: true
+    isReact: false
   },
 };

@@ -2,7 +2,7 @@
   <div v-if="steps" class="flex justify-center">
     <nav aria-label="Progress">
       <ol role="list" class="flex items-center">
-        <li v-for="(step, stepIdx) in steps" :key="step.id" :class="[stepIdx !== steps.length - 1 ? 'pr-8 sm:pr-20' : '', 'relative']">
+        <li v-for="(step, stepIdx) in steps" :key="step.number" :class="[stepIdx !== steps.length - 1 ? 'pr-8 sm:pr-20' : '', 'relative']">
           <template v-if="step.status === 'Complete'">
             <div class="absolute inset-0 flex items-center" aria-hidden="true">
               <div class="h-0.5 w-full bg-indigo-600" />

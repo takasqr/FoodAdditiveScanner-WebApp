@@ -36,7 +36,7 @@ export const Primary: Story = {
   }),
   args: {
     navigationTop: [
-      { name: 'メニュー', href: '/menu', onClick: null, icon: HomeIcon, current: false },
+      { name: 'メニュー', href: '/menu', onClick: undefined, icon: HomeIcon, current: false },
       { name: 'リクエスト', href: '/request', icon: CubeIcon, current: false },
       { name: '履歴', href: '/history', icon: BookOpenIcon, current: false },
       { name: '支払い', href: '/payment', icon: CurrencyYenIcon, current: false },
@@ -45,7 +45,7 @@ export const Primary: Story = {
       { name: '設定', href: '/setting', icon: Cog6ToothIcon, current: false },
     ],
     navigationBottom: [
-      { name: 'ログアウト', href: null, onClick: () => console.log('click.'), icon: null, current: null },
+      { name: 'ログアウト', href: undefined, onClick: () => console.log('click.'), icon: undefined, current: undefined },
     ]
   }
 };

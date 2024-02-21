@@ -1,6 +1,6 @@
 <template>
 
-  <NavigationDrawer>
+  <!-- <NavigationDrawer> -->
 
     <Breadcrumb></Breadcrumb>
 
@@ -28,12 +28,12 @@
 
     <TextArea></TextArea>
 
-    <Select :data="options"></Select>
+    <!-- <Select :data="options"></Select> -->
 
 
     <DatePicker></DatePicker>
 
-    <Feed></Feed>
+    <!-- <Feed></Feed> -->
 
 
     <SlideOver :is-open="isSlideOverOpen" @update:isOpen="handleUpdateIsOpen">
@@ -53,7 +53,7 @@
     <Checkbox title="利用規約に同意"></Checkbox>
 
     <Footer></Footer>
-  </NavigationDrawer>
+  <!-- </NavigationDrawer> -->
 </template>
 
 <script setup lang="ts">

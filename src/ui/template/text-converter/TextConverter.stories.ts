@@ -10,6 +10,8 @@ const meta: Meta<typeof TextConverter> = {
 export default meta;
 type Story = StoryObj<typeof TextConverter>;
 
+const convertFunc: (inputText: string) => string = (inputText: string) => inputText + '：この入力はテストです。'
+
 /*
  *👇 Render functions are a framework specific feature to allow you control on how the component renders.
  * See https://storybook.js.org/docs/api/csf
@@ -23,10 +25,10 @@ export const Primary: Story = {
       }
     },
     components: { TextConverter },
-    template: '<TextConverter :func="convert" @convert="(value) => console.log(value)"></TextConverter>',
+    template: '<TextConverter :func="func" @convert="(value) => console.log(value)"></TextConverter>',
   }),
   args: {
-    convert: (inputText: string) => inputText + '：この入力はテストです。',
+    func: convertFunc,
   },
 };
 
@@ -38,10 +40,10 @@ export const WithPlaceholder: Story = {
       }
     },
     components: { TextConverter },
-    template: '<TextConverter :func="convert" @convert="(value) => console.log(value)" :placeholderInput="placeholderInput" :placeholderResult="placeholderResult"></TextConverter>',
+    template: '<TextConverter :func="func" @convert="(value) => console.log(value)" :placeholderInput="placeholderInput" :placeholderResult="placeholderResult"></TextConverter>',
   }),
   args: {
-    convert: (inputText: string) => inputText + '：この入力はテストです。',
+    func: convertFunc,
     placeholderInput: '１２３ａｂｃ',
     placeholderResult: '123abc'
   },
@@ -55,10 +57,10 @@ export const WithValue: Story = {
       }
     },
     components: { TextConverter },
-    template: '<TextConverter v-model="modelValue" :func="convert" @convert="(value) => console.log(value)" :placeholderInput="placeholderInput" :placeholderResult="placeholderResult"></TextConverter>',
+    template: '<TextConverter v-model="modelValue" :func="func" @convert="(value) => console.log(value)" :placeholderInput="placeholderInput" :placeholderResult="placeholderResult"></TextConverter>',
   }),
   args: {
-    convert: (inputText: string) => inputText + '：この入力はテストです。',
+    func: convertFunc,
     placeholderInput: '１２３ａｂｃ',
     placeholderResult: '123abc',
     modelValue: '１'

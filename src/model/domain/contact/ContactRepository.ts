@@ -1,4 +1,5 @@
 import { getFirestore, Firestore, collection, addDoc, setDoc, doc } from "firebase/firestore";
+import { ContactData } from "./ContactData";
 
 class ContactRepository implements IContactRepository {
   private db: Firestore

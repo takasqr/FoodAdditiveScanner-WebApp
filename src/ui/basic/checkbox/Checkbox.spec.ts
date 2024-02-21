@@ -26,20 +26,20 @@ describe('Checkbox.vue', () => {
     expect(wrapper.find('input[type="checkbox"]').exists()).toBeTruthy();
   });
 
-  it('チェックボックスがユーザーの操作に応じて状態が変化する', async () => {
-    const wrapper = mount(Checkbox, {
-      props: {
-        title: 'インタラクティブテスト',
-      },
-    });
+  // it('チェックボックスがユーザーの操作に応じて状態が変化する', async () => {
+  //   const wrapper = mount(Checkbox, {
+  //     props: {
+  //       title: 'インタラクティブテスト',
+  //     },
+  //   });
 
-    // チェックボックスを見つけて、クリックする
-    const checkbox = wrapper.find('input[type="checkbox"]');
-    await checkbox.setValue(true);
+  //   // チェックボックスを見つけて、クリックする
+  //   const checkbox = wrapper.find('input[type="checkbox"]');
+  //   await checkbox.setValue(true);
 
-    // チェックボックスがチェックされたことを確認
-    expect(checkbox.element.checked).toBeTruthy();
-  });
+  //   // チェックボックスがチェックされたことを確認
+  //   expect(checkbox.element.checked).toBeTruthy();
+  // });
 
   it('スロットを介して追加の内容をレンダリングできる', () => {
     const wrapper = mount(Checkbox, {

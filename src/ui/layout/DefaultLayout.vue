@@ -48,6 +48,6 @@ const navigationTop: NavigationDrawerContent[] = [
 ]
 
 const navigationBottom: NavigationDrawerContent[] = [
-  { name: 'ログアウト', href: undefined, onClick: () => console.log('click.'), icon: null, current: null },
+  { name: 'ログアウト', href: undefined, onClick: () => console.log('click.'), icon: undefined, current: undefined },
 ]
 </script>

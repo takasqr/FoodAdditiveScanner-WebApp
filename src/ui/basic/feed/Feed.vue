@@ -31,14 +31,6 @@
 import { defineProps, type PropType } from 'vue';
 import { CheckIcon, HandThumbUpIcon, UserIcon } from '@heroicons/vue/20/solid'
 
-interface TimeLine {
-  id: number
-  content: string
-  date: string
-  icon: any
-  iconBackground: string
-}
-
 const props = defineProps({
   timeline: {
     type: Array as PropType<TimeLine[]>,
