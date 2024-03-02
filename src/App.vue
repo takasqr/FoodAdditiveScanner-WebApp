@@ -8,6 +8,21 @@ import { BannerStore } from '@/ui/basic/banner/BannerStore';
 import { useHead } from '@unhead/vue'
 
 useHead({
+  meta: [
+    { name: 'title', content: '添加物スキャナー' },
+    { name: 'description', content: '添加物スキャナーはどんな食品添加物が使われているか簡単に調べられるアプリです。食品の添加物ラベルを読み取り、その内容をAI技術を活用して自動的に認識し、分析結果を表示します。' },
+    // Open Graph
+    { property: 'og:url', content: 'https://foodadditive.app' },
+    { property: 'og:title', content: '添加物スキャナー' },
+    { property: 'og:description', content: '添加物スキャナーはどんな食品添加物が使われているか簡単に調べられるアプリです。食品の添加物ラベルを読み取り、その内容をAI技術を活用して自動的に認識し、分析結果を表示します。' },
+    { property: 'og:image', content: 'https://foodadditive.app/ogp_image.jpg' },
+    // Twitter Card
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:site', content: '@takasqr' },
+    { name: 'twitter:creator', content: '@takasqr' },
+    // サムネイル指定
+    { name: 'thumbnail', content: 'https://foodadditive.app/ogp_image.jpg' }
+  ],
   script: [
     {
       innerHTML: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
