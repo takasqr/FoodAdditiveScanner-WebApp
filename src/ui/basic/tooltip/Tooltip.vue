@@ -1,13 +1,17 @@
 <template>
   <span class="relative group">
-    <slot />
+    <div @mouseenter="showTooltip" @mouseleave="hideTooltip">
+      <slot />
+    </div>
     <span v-show="isReact" class="absolute whitespace-nowrap -bottom-12 left-1/2 -translate-x-1/2 bg-gray-600 py-1 px-2 text-white rounded">{{ reactiveText }}</span>
-    <span v-show="!isReact" class="opacity-0 group-hover:opacity-100 absolute whitespace-nowrap -bottom-12 left-1/2 -translate-x-1/2 bg-gray-600 py-1 px-2 text-white rounded">{{ hoverText }}</span>
+    <span v-show="!isReact && isShowTooltip" class="absolute z-50 whitespace-nowrap -bottom-12 left-1/2 -translate-x-1/2 bg-gray-600 py-1 px-2 text-white rounded">{{ hoverText }}</span>
   </span>
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits, watch } from 'vue';
+import { ref, defineProps, defineEmits, watch } from 'vue';
+
+const isShowTooltip = ref(false)
 
 const props = defineProps({
   reactiveText: {
@@ -33,4 +37,12 @@ watch(
     }
   }
 )
+
+function showTooltip() {
+  isShowTooltip.value = true
+}
+
+function hideTooltip() {
+  isShowTooltip.value = false
+}
 </script>
