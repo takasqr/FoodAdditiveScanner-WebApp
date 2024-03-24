@@ -17,6 +17,7 @@
                   <DialogTitle as="h3" class="text-base font-semibold leading-6 text-gray-900">{{ title }}</DialogTitle>
                   <div class="mt-2">
                     <p class="text-sm text-gray-500">{{ contentText }}</p>
+                    <slot />
                   </div>
                 </div>
               </div>
@@ -40,8 +41,8 @@
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { CheckIcon } from '@heroicons/vue/24/outline'
 import { DialogStore } from './DialogStore'
-import PrimaryButton from '@/ui/template/primary-button/PrimaryButton.vue';
-import SecondaryButton from '@/ui/template/secondary-button/SecondaryButton.vue'
+import PrimaryButton from '../../template/primary-button/PrimaryButton.vue';
+import SecondaryButton from '../../template/secondary-button/SecondaryButton.vue'
 
 // ダイアログ用 state を購読
 const dialogStore = DialogStore()
