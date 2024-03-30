@@ -88,6 +88,7 @@ import { defineComponent, h } from 'vue'
 
 const navigation = {
   solutions: [
+    { name: 'KeyScript', href: 'https://keyscript.app' },
     { name: '添加物スキャナー', href: 'https://foodadditive.app' },
     { name: 'Todo8', href: 'https://todo8.app' },
     { name: 'エージェントAI', href: 'https://agentai.jp' },
