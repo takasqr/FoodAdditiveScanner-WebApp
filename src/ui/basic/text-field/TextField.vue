@@ -31,6 +31,7 @@ const props = defineProps<{
 
 // emit を定義
 const emit = defineEmits<{
+  input: [value: Event],
   change: [value: Event]
 }>()
 
@@ -83,6 +84,8 @@ function inputValue(event: Event) {
       errorMassage.value = validationResult as string; // エラーメッセージを設定
     }
   }
+
+  emit('input', event)
 }
 
 // バリデーション
