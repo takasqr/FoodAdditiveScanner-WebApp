@@ -29,5 +29,3 @@ export const Primary: Story = {
     text: 'コピー用テキスト'
   }
 };
-
-//     template: '<div class="h-40 w-40 align-center text-center"><CopyButton :text="text"></CopyButton></div>',
