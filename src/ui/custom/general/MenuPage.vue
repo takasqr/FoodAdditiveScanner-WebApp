@@ -4,10 +4,17 @@
   </SlideOver>
 
   <DefaultLayout>
+    <Carousel>
+      <img src="/carousel-0.webp" alt="Slide 1">
+      <img src="/carousel-1.webp" alt="Slide 2">
+      <img src="/carousel-2.webp" alt="Slide 3">
+    </Carousel>
     <Card>
       <Feed :timeline="timeline"></Feed>
     </Card>
     
+    <CustomFooter></CustomFooter>
+
     <!-- <MainMenu></MainMenu> -->
   </DefaultLayout>
 
@@ -27,6 +34,8 @@ import { QuestionMarkCircleIcon } from '@heroicons/vue/24/outline'
 import Feed from '@/ui/basic/feed/Feed.vue'
 import Card from '@/ui/basic/card/Card.vue';
 import { CheckIcon, HandThumbUpIcon, UserIcon } from '@heroicons/vue/20/solid'
+import Carousel from '@/ui/basic/carousel/Carousel.vue';
+import CustomFooter from './CustomFooter.vue';
 
 const isSlideOverOpen = ref(false)
 
