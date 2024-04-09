@@ -4,7 +4,10 @@
     <div class="sm:col-span-4">
       <label for="username" class="block text-sm font-medium leading-6 text-gray-900">名前</label>
       <div class="mt-2">
-        <TextField></TextField>
+        <TextField
+         :value="userName"
+         @input="inputUserName($event)"
+        ></TextField>
       </div>
     </div>
 
@@ -20,4 +23,17 @@
 <script setup lang="ts">
 import TextField from '../../basic/text-field/TextField.vue';
 import TextFieldEmail from '../../template/text-field-email/TextFieldEmail.vue';
+import { ref } from 'vue'
+
+const userName = ref('')
+
+function inputUserName(event: Event) {
+
+  const target = event.target as HTMLInputElement | null
+
+  if (target) {
+    
+    userName.value = target.value
+  }
+}
 </script>
